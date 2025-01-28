@@ -28,9 +28,11 @@
 
 
 // Using MongoDB
-import bcrypt from 'bcryptjs';
-import User from '@/models/User'; // Assuming the User model is already set up for Mongoose
-import connectMongo from '@/lib/mongodb'
+import bcrypt from 'bcrypt';
+import crypto from 'crypto';
+import { sendOtpEmail } from '../../../../lib/nodemailer';
+import Participant from '../../../../models/Participant';
+import connectMongo from '../../../../lib/mongodb'
 
 import { NextResponse } from 'next/server';
 
@@ -47,7 +49,7 @@ export async function POST(req) {
     }
 
     // Check if a user with the same email already exists
-    const existingUser = await User.findOne({ email });
+    const existingUser = await Participant.findOne({ email });
     
     if (existingUser) {
       return NextResponse.json({ error: 'User with this email already exists' }, { status: 400 });
@@ -56,15 +58,19 @@ export async function POST(req) {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create a new user in MongoDB
-    const user = new User({
+    const user = new Participant({
       email,
       password: hashedPassword,
     });
+
     await user.save();
 
+    // await sendOtpEmail(email, otp);
+
+    return NextResponse.json({ message: 'User created. Please verify your email.', userId: user._id }, { status: 201 });
+
     // Return the created user
-    return NextResponse.json(user, { status: 201 });
+    // return NextResponse.json(user, { status: 201 });
   } catch (error) {
     console.error('Error creating user:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });

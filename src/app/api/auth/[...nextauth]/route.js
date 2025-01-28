@@ -73,8 +73,8 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import connectMongo from "@/lib/mongodb"; // MongoDB connection utility
-import User from "@/models/User"; // Mongoose User model
+import connectMongo from "../../../../lib/mongodb";
+import Participant from "../../../../models/Participant";
 
 const authOptions = {
   providers: [
@@ -89,13 +89,14 @@ const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Email and password are required");
         }
 
         await connectMongo(); // Ensure MongoDB is connected
 
-        const user = await User.findOne({ email: credentials.email });
+        const user = await Participant.findOne({ email: credentials.email });
 
         if (!user) {
           throw new Error("Invalid email or password");
@@ -107,7 +108,7 @@ const authOptions = {
           throw new Error("Invalid email or password");
         }
 
-        return user; // Return the user object
+        return user;
       },
     }),
   ],
@@ -124,11 +125,11 @@ const authOptions = {
       if (account.provider === 'google') {
         await connectMongo(); // Ensure MongoDB is connected
         
-        let existingUser = await User.findOne({ email: user.email });
+        let existingUser = await Participant.findOne({ email: user.email });
 
         if (!existingUser) {
           // Create new user in the database if not exists
-          const newUser = new User({
+          const newUser = new Participant({
             email: user.email,
             name: user.name,
             image: user.image,

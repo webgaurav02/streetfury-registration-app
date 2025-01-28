@@ -6,15 +6,15 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 //React buttons
-import {
-  GoogleLoginButton,
-  // FacebookLoginButton,
-} from "react-social-login-buttons";
+// import {
+//   GoogleLoginButton,
+//   // FacebookLoginButton,
+// } from "react-social-login-buttons";
 
 
 
 const providers = [
-  { name: "Google", id: "google", Button: GoogleLoginButton },
+  { name: "Google", id: "google" },
   // { name: "GitHub", id: "github" },
   // { name: "Facebook", id: "facebook" },
   // { name: "Apple", id: "apple" },
@@ -26,7 +26,7 @@ const providers = [
 
 
 //Assets
-import bg from "../../../../public/images/signin_bg.jpg"
+// import bg from "../../../../public/images/signin_bg.jpg"
 
 export default function SignIn() {
 
@@ -52,7 +52,7 @@ export default function SignIn() {
   }, [status, router]);
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await signIn("credentials", {
       email,
@@ -73,14 +73,14 @@ export default function SignIn() {
     <div className="relative flex min-h-screen min-w-full justify-center items-center">
 
       {status==='unauthenticated' && <div>
-        <Image
+        {/* <Image
           src={bg}
           width='0'
           height='0'
           sizes="100vw"
           className="absolute top-0 left-0 w-screen h-full object-cover -z-50 backdrop-blur-lg"
           alt='Expenses Sign-In'
-        />
+        /> */}
 
         <div className="absolute top-0 left-0 w-screen h-full bg-black bg-opacity-65 backdrop-blur-xs -z-40">
 
@@ -93,19 +93,19 @@ export default function SignIn() {
             <div className="pb-5">
               {/* Using react-social-login-buttons */}
               {providers.map((provider) => (
-                <GoogleLoginButton key={provider.id} onClick={() => signIn(provider.id)}>
+                <div className="login-with-google-btn cursor-pointer" key={provider.id} onClick={() => signIn(provider.id)}>
                   Sign in with {provider.name}
-                </GoogleLoginButton>
+                </div>
               ))}
             </div>
 
             <div className="flex flex-row justify-center gap-2">
 
-              <p className="border-b mb-3 border-white w-full"></p>
+              <p className="border-b mb-3 border-text w-full"></p>
 
               <p className="text-xl">Or</p>
 
-              <p className="border-b mb-3 border-white w-full"></p>
+              <p className="border-b mb-3 border-text w-full"></p>
 
             </div>
 
