@@ -122,6 +122,7 @@ const authOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       // When using Google, check if user exists in database, create if not
+      console.log(user)
       if (account.provider === 'google') {
         await connectMongo(); // Ensure MongoDB is connected
         
@@ -133,7 +134,7 @@ const authOptions = {
             email: user.email,
             name: user.name,
             image: user.image,
-            password: '', // Password is not needed for Google sign-in
+            password: '', 
           });
           
           await newUser.save();

@@ -3,18 +3,19 @@
 export default function Footer() {
   return (
     <footer className="bg-black text-white py-8">
-      <div className=" mx-auto px-5 md:px-10">
-        <div className="flex flex-wrap justify-between items-center">
+      <div className=" mx-auto px-10 ">
+        <div className="flex flex-wrap justify-between items-center space-y-10">
           {/* Logo and Description */}
           <div className="w-full md:w-1/3 mb-4 md:mb-0">
-            <h2 className="text-2xl font-bold">TRIPPPIO</h2>
-            <p className="mt-2 text-gray-400">
-              Building great experiences, one website at a time.
+            <h2 className="text-4xl font-anton font-black">minus<span className="text-primary">01</span></h2>
+            <p className="mt-2 text-gray-400 pr-10">
+            Minus 01 is where culture, creativity, and performance unite for those who dare
+            to move differently
             </p>
           </div>
 
           {/* Quick Links */}
-          <div className="w-full md:w-1/3 mb-4 md:mb-0">
+          <div className="w-full md:w-1/3 mb-4 md:mb-0 md:px-10">
             <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -104,7 +105,7 @@ export default function Footer() {
 
         {/* Copyright Section */}
         <div className="mt-8 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} TRIPPPIO. All rights reserved.
+          © {new Date().getFullYear()} minus01. All rights reserved.
         </div>
       </div>
     </footer>

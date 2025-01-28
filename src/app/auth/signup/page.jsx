@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 
 
 const providers = [
-    // { name: "Google", id: "google", Button: GoogleLoginButton },
+    { name: "Google", id: "google" },
     // { name: "GitHub", id: "github" },
     // { name: "Facebook", id: "facebook" },
     // { name: "Apple", id: "apple" },
@@ -99,8 +99,8 @@ export default function SignUp() {
                 return;
             }
 
-            setOtpId(data.otpId); 
-            setShowOtp(true); 
+            setOtpId(data.otpId);
+            setShowOtp(true);
         } catch (error) {
             toast.error("Something went wrong. Please try again.");
         } finally {
@@ -192,42 +192,64 @@ export default function SignUp() {
                                 <h1 className="text-3xl font-bold font-inter uppercase mb-10">Sign Up</h1>
 
                                 {!showOtp ? (
-                                    <form onSubmit={handleSubmit} className="flex flex-col py-10">
-                                        <div className={`border ${(!emailRegex.test(email) && email !== "") ? "border-red-600" : "border-text"} flex flex-col text-left rounded-md px-2 py-1`}>
-                                            <label htmlFor="email" className="text-xs">Email</label>
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                required
-                                                className="bg-transparent border-none outline-none"
-                                            />
+                                    <div>
+                                        <div className="pb-5">
+                                            {/* Using react-social-login-buttons */}
+                                            {providers.map((provider) => (
+                                                <div className="login-with-google-btn cursor-pointer" key={provider.id} onClick={() => signIn(provider.id)}>
+                                                    Sign in with {provider.name}
+                                                </div>
+                                            ))}
                                         </div>
-                                        <div className="mt-2 border border-text flex flex-col text-left rounded-md px-2 py-1">
-                                            <label htmlFor="password" className="text-xs">Password</label>
-                                            <input
-                                                type="password"
-                                                name="password"
-                                                value={password}
-                                                onChange={(e) => setPassword(e.target.value)}
-                                                required
-                                                className="bg-transparent border-none outline-none"
-                                            />
+
+                                        <div className="flex flex-row justify-center gap-2">
+
+                                            <p className="border-b mb-3 border-text w-full"></p>
+
+                                            <p className="text-xl">Or</p>
+
+                                            <p className="border-b mb-3 border-text w-full"></p>
+
                                         </div>
-                                        <div className="mt-2 border border-text flex flex-col text-left rounded-md px-2 py-1">
-                                            <label htmlFor="passwordConfirm" className="text-xs">Re-enter Password</label>
-                                            <input
-                                                type="password"
-                                                name="passwordConfirm"
-                                                value={passwordConfirm}
-                                                onChange={(e) => setPasswordConfirm(e.target.value)}
-                                                required
-                                                className="bg-transparent border-none outline-none"
-                                            />
-                                        </div>
-                                        <button type="submit" className="mt-5 bg-secondary hover:bg-accent transition-colors py-2 font-semibold">Create Account</button>
-                                    </form>
+
+                                        <form onSubmit={handleSubmit} className="flex flex-col py-10">
+                                            <div className={`border ${(!emailRegex.test(email) && email !== "") ? "border-red-600" : "border-text"} flex flex-col text-left rounded-md px-2 py-1`}>
+                                                <label htmlFor="email" className="text-xs">Email</label>
+                                                <input
+                                                    type="email"
+                                                    name="email"
+                                                    value={email}
+                                                    onChange={(e) => setEmail(e.target.value)}
+                                                    required
+                                                    className="bg-transparent border-none outline-none"
+                                                />
+                                            </div>
+                                            <div className="mt-2 border border-text flex flex-col text-left rounded-md px-2 py-1">
+                                                <label htmlFor="password" className="text-xs">Password</label>
+                                                <input
+                                                    type="password"
+                                                    name="password"
+                                                    value={password}
+                                                    onChange={(e) => setPassword(e.target.value)}
+                                                    required
+                                                    className="bg-transparent border-none outline-none"
+                                                />
+                                            </div>
+                                            <div className="mt-2 border border-text flex flex-col text-left rounded-md px-2 py-1">
+                                                <label htmlFor="passwordConfirm" className="text-xs">Re-enter Password</label>
+                                                <input
+                                                    type="password"
+                                                    name="passwordConfirm"
+                                                    value={passwordConfirm}
+                                                    onChange={(e) => setPasswordConfirm(e.target.value)}
+                                                    required
+                                                    className="bg-transparent border-none outline-none"
+                                                />
+                                            </div>
+                                            <button type="submit" className="mt-5 bg-secondary hover:bg-accent transition-colors py-2 font-semibold">Create Account</button>
+                                        </form>
+
+                                    </div>
                                 ) : (
                                     <motion.div
                                         initial={{ y: "-100%", opacity: 0 }}

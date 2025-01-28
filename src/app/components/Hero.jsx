@@ -33,7 +33,7 @@ const Hero = () => {
                         <p className="text-2xl font-anton font-black mt-2 text-primary">Mar 27, 2025</p>
                         <p className="text-sm mt-1">North Eastern Hill University, Shillong, Meghalaya</p>
                     </div>
-                    <Link href='/register' className='bg-primary hover:bg-white hover:text-black hover:scale-[102%] transition-all duration-200 shadow-2xl text-white font-anton font-black h-fit px-20 py-4 rounded-md'>
+                    <Link href='/register/personal' className='bg-primary text-center hover:bg-white hover:text-black hover:border-2 border-primary hover:scale-[102%] transition-all duration-200 shadow-2xl text-white font-anton font-black h-fit md:px-20 py-4 rounded-md'>
                         Register
                     </Link>
                 </div>
