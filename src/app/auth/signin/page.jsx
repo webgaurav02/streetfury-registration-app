@@ -34,11 +34,6 @@ export default function SignIn() {
   const { status } = useSession();
   const router = useRouter();
 
-  const searchParams = useSearchParams();
-
-  // Extract the 'package' query parameter
-  const packageId = searchParams.get('booking');
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -71,7 +66,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="relative flex min-h-screen min-w-full justify-center items-center">
+    <div className="relative flex min-h-[100svh] min-w-full justify-center items-center">
 
       {status === 'unauthenticated' && <div>
 
@@ -81,7 +76,7 @@ export default function SignIn() {
 
         <div className="text-center">
           <motion.div
-            className="min-w-[30vw] mt-10 bg-white shadow-2xl backdrop-blur-md px-10 py-10 rounded-md"
+            className="md:min-w-[30vw] min-w-[90svw] mt-10 bg-white shadow-2xl backdrop-blur-md px-10 py-10 rounded-md"
             initial={{ y: "-10%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}

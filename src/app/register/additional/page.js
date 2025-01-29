@@ -70,7 +70,7 @@ const AdditionalDataPage = () => {
           }
           setUserData(prevState => ({
             ...prevState,
-            sport: data.participant.sport.trim() || '',
+            sport: data.participant?.sport?.trim() || '',
             instagram: data.participant.instagram || '',
             youtube: data.participant.youtube || '',
             pitch: data.participant.pitch || '',

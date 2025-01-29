@@ -182,14 +182,14 @@ export default function SignUp() {
                 theme="light"
                 {...{ transition: Bounce }}
             />
-            <div className="relative flex min-h-screen min-w-full justify-center items-center">
+            <div className="relative flex min-h-[100svh] min-w-full justify-center items-center">
                 {status === "unauthenticated" && (
                     <div>
                         <div className="absolute top-0 left-0 w-screen h-full bg-[#f8f8f8] -z-40" />
 
                         <div className="text-center">
                             <motion.div
-                                className="min-w-[30vw] mt-10 bg-white  border-black shadow-2xl backdrop-blur-md px-10 py-10 rounded-md"
+                                className="md:min-w-[30vw] min-w-[90svw] mt-10 bg-white  border-black shadow-2xl backdrop-blur-md px-10 py-10 rounded-md"
                                 initial={{ y: "-10%", opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 exit={{ y: "-100%", opacity: 0 }}
@@ -204,7 +204,7 @@ export default function SignUp() {
                                             {/* Using react-social-login-buttons */}
                                             {providers.map((provider) => (
                                                 <div className="login-with-google-btn cursor-pointer" key={provider.id} onClick={() => signIn(provider.id)}>
-                                                    Sign in with {provider.name}
+                                                    Sign up with {provider.name}
                                                 </div>
                                             ))}
                                         </div>

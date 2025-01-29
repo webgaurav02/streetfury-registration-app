@@ -77,7 +77,7 @@ const Navbar: FC = () => {
                     transition={{ duration: 0.2 }}
                     {...{ className: "absolute right-0 mt-2 w-48 px-4 py-5 space-y-2 bg-secondary text-text shadow-md rounded-lg z-50" }}
                   >
-                    <p>Hi! <b>{session.user.name?.split(' ')[0]}</b></p>
+                    <p>Hi! <b>{session.user?.name?.split(' ')[0]}</b></p>
                     <hr className=" h-[0.1px] border-text w-full my-2"/>
                     <Link
                       href="/dashboard"
@@ -85,13 +85,6 @@ const Navbar: FC = () => {
                       onClick={() => setDropdownOpen(false)}
                     >
                       Dashboard
-                    </Link>
-                    <Link
-                      href="/account"
-                      className="block hover:text-white transition-colors"
-                      onClick={() => setDropdownOpen(false)}
-                    >
-                      Account
                     </Link>
                     <button
                       onClick={() => {
