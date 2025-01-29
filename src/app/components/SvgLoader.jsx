@@ -1,15 +1,3 @@
-// import React from 'react'
-
-// const Loading = () => {
-//   return (
-//     <div className="fixed top-0 left-0 bg-background w-screen h-screen z-50 flex items-center justify-center">
-//         <span className="loader"></span>
-//     </div>
-//   )
-// }
-
-// export default Loading
-
 'use client'
 
 import Image from "next/image";
@@ -46,7 +34,7 @@ const Loader = () => {
     }, []);
 
     return (
-        <div className="h-screen w-screen bg-black/80 backdrop-blur-sm fixed left-0 top-0 flex justify-center items-center">
+        <div className="h-screen w-screen bg-black/50 backdrop-blur-sm fixed left-0 top-0 flex justify-center items-center">
             <div className="flex flex-col h-[250px] justify-between">
                 <Image
                     src={svgs[currentIndex]}

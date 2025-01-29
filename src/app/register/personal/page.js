@@ -216,7 +216,7 @@ const PersonalDataPage = () => {
 
 
   return (
-    <div className='min-h-screen bg-[#f8f8f8] md:px-40 px-10 py-20'>
+    <div className='min-h-screen bg-[#f8f8f8] md:px-60 px-10 py-20'>
       {isLoading && <Loading />}
       <motion.h1
         className='md:text-4xl text-2xl font-anton font-bold'
@@ -226,8 +226,8 @@ const PersonalDataPage = () => {
       >
         Personal Information
       </motion.h1>
-      <div className='py-10'>
-        <motion.form onSubmit={handleSubmit} className="space-y-4 md:w-1/2"
+      <div className='py-10 md:max-w-[30vw]'>
+        <motion.form onSubmit={handleSubmit} className="space-y-4"
           variants={containerVariants}
           initial="hidden"
           animate="show"

@@ -4,12 +4,12 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-
 //MUI Icons
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import AddToDriveIcon from '@mui/icons-material/AddToDrive';
 import Loading from '../../components/Loading';
+import Link from 'next/link';
 
 
 
@@ -88,10 +88,13 @@ const AdditionalDataPage = () => {
 
   const validate = () => {
     const newErrors = {};
+    const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/;
 
-    if (!userData.sport) newErrors.firstname = 'Select a Sport';
-    if (!userData.instagram) newErrors.lastname = 'Instagram Link is required.';
-    if (!userData.pitch) newErrors.gender = 'Please write a Short Pitch';
+    if (!userData.sport) newErrors.sport = 'Select a Sport';
+    if (!userData.instagram || !urlRegex.test(userData.instagram)) newErrors.instagram = 'Enter a valid Instagram URL.';
+    if (userData.youtube && !urlRegex.test(userData.youtube)) newErrors.youtube = 'Enter a valid YouTube URL.';
+    if (!userData.pitch) newErrors.pitch = 'Please write a Short Pitch';
+    if (!userData.portfolio || !urlRegex.test(userData.portfolio)) newErrors.portfolio = 'Enter a valid Google Drive URL.';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -123,7 +126,8 @@ const AdditionalDataPage = () => {
 
       setIsLoading(false);
 
-      alert('Form submitted successfully!');
+      // alert('Form submitted successfully!');
+      router.push("/register/summary");
 
     } catch (error) {
       setIsLoading(true);
@@ -136,11 +140,11 @@ const AdditionalDataPage = () => {
 
 
   return (
-    <div className='min-h-screen bg-[#f8f8f8] md:px-40 px-10 py-20'>
+    <div className='min-h-screen bg-[#f8f8f8] md:px-60 px-10 py-20'>
       {isLoading && <Loading />}
       <h1 className='md:text-4xl text-2xl font-anton font-bold'>Additional Information</h1>
-      <div className='py-10'>
-        <form onSubmit={handleSubmit} className="space-y-4 md:w-1/2">
+      <div className='py-10 md:max-w-[30vw]'>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-bold mb-2">Sport of Interest <span className='text-red-600'>&#42;</span></label>
             <select
@@ -230,12 +234,11 @@ const AdditionalDataPage = () => {
           </div>
 
           <div className='flex flex-row justify-between text-right pt-20'>
-            <button
-              type="submit"
-              className="w-40 bg-gray-300 text-white px-10 py-3 rounded hover:bg-orange-700 font-black"
+            <Link href="/register/personal"
+              className="w-40 bg-gray-300 text-white text-center py-3 rounded hover:bg-orange-700 font-black"
             >
               Back
-            </button>
+            </Link>
             <button
               type="submit"
               className="w-40 bg-primary text-white px-10 py-3 rounded hover:bg-orange-700 font-black"

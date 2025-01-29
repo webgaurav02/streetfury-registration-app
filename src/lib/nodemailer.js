@@ -1,4 +1,7 @@
 import nodemailer from 'nodemailer';
+import handlebars from 'handlebars';
+import fs from 'fs';
+import path from 'path';
 
 export const sendEmail = async (to, subject, htmlContent, pdfBuffer, ticketId) => {
 
@@ -45,26 +48,30 @@ export const sendEmail = async (to, subject, htmlContent, pdfBuffer, ticketId) =
     }
 };
 
-export const sendOtpEmail = async (email, otp) => {
+export const sendOtpEmail = async (email, emailHtml) => {
 
-    const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
-    });
+    try {
+        // Create the transporter
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
 
-    const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: 'Email Verification',
-        html: `
-          <p>Thank you for registering. Please use the OTP below to verify your email:</p>
-          <h3>${otp}</h3>
-          <p>This OTP is valid for 10 minutes.</p>
-        `,
-    };
+        // Set email options
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: 'Minus01 Verification Code',
+            html: emailHtml,
+        };
 
-    await transporter.sendMail(mailOptions);
+        // Send the email
+        await transporter.sendMail(mailOptions);
+        console.log('OTP email sent successfully.');
+    } catch (error) {
+        console.error('Error sending OTP email:', error);
+    }
 }

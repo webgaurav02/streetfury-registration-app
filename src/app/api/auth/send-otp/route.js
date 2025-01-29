@@ -4,6 +4,7 @@ import { sendOtpEmail } from '../../../../lib/nodemailer';
 import Participant from '../../../../models/Participant';
 import Otp from '../../../../models/Otp';
 import connectMongo from '../../../../lib/mongodb'
+import verificationEmail from '../../../../templates/verificationEmail.hbs'
 
 import { NextResponse } from 'next/server';
 
@@ -21,7 +22,7 @@ export async function POST(req) {
 
     // Check if a user with the same email already exists
     const existingUser = await Participant.findOne({ email });
-    
+
     if (existingUser) {
       return NextResponse.json({ error: 'User with this email already exists' }, { status: 400 });
     }
@@ -38,9 +39,13 @@ export async function POST(req) {
 
     await otpGen.save();
 
-    await sendOtpEmail(email, otp);
+    const emailHtml = verificationEmail({
+      otp: otp
+    });
 
-    return NextResponse.json({ message: 'OTP created. Please verify your email.', otpId: otpGen._id }, { status: 201 }); 
+    await sendOtpEmail(email, emailHtml);
+
+    return NextResponse.json({ message: 'OTP created. Please verify your email.', otpId: otpGen._id }, { status: 201 });
 
   } catch (error) {
     console.error('Error creating otp:', error);

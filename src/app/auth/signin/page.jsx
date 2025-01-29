@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 //React buttons
 // import {
 //   GoogleLoginButton,
@@ -34,7 +35,7 @@ export default function SignIn() {
   const router = useRouter();
 
   const searchParams = useSearchParams();
-  
+
   // Extract the 'package' query parameter
   const packageId = searchParams.get('booking');
 
@@ -44,7 +45,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      if(packageId)
+      if (packageId)
         router.push(`/package/${packageId}`);
       else
         router.push('/')
@@ -63,7 +64,7 @@ export default function SignIn() {
     if (res?.error) {
       setErrorMessage("Invalid email or password");
     }
-    else{
+    else {
       router.push('/')
     }
 
@@ -72,23 +73,22 @@ export default function SignIn() {
   return (
     <div className="relative flex min-h-screen min-w-full justify-center items-center">
 
-      {status==='unauthenticated' && <div>
-        {/* <Image
-          src={bg}
-          width='0'
-          height='0'
-          sizes="100vw"
-          className="absolute top-0 left-0 w-screen h-full object-cover -z-50 backdrop-blur-lg"
-          alt='Expenses Sign-In'
-        /> */}
+      {status === 'unauthenticated' && <div>
 
-        <div className="absolute top-0 left-0 w-screen h-full bg-black bg-opacity-65 backdrop-blur-xs -z-40">
+        <div className="absolute top-0 left-0 w-screen h-full bg-[#f8f8f8] -z-40">
 
         </div>
 
         <div className="text-center">
-          <div className="min-w-[30vw] mt-10 bg-cards backdrop-blur-md px-10 py-10 rounded-md">
-            <h1 className="text-3xl font-bold font-inter uppercase mb-10">Sign In</h1>
+          <motion.div
+            className="min-w-[30vw] mt-10 bg-white shadow-2xl backdrop-blur-md px-10 py-10 rounded-md"
+            initial={{ y: "-10%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: "-100%", opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <h1 className="text-3xl font-bold font-inter mb-10">minus<span className="text-primary">01</span></h1>
+            <h1 className="text-xl font-bold font-inter uppercase mb-10">Sign In</h1>
 
             <div className="pb-5">
               {/* Using react-social-login-buttons */}
@@ -135,13 +135,13 @@ export default function SignIn() {
                   className="bg-transparent border-none outline-none"
                 />
               </div>
-              <button type="submit" className="mt-5 bg-secondary hover:bg-accent transition-colors py-2 font-semibold">Sign In</button>
+              <button type="submit" className="mt-5 bg-secondary text-white hover:bg-accent transition-colors py-2 font-semibold">Sign In</button>
             </form>
 
             <Link href='/auth/signup'>
               Need an account? <b>Sign Up</b>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </div>}
     </div>

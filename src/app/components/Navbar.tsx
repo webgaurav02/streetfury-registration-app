@@ -81,14 +81,14 @@ const Navbar: FC = () => {
                     <hr className=" h-[0.1px] border-text w-full my-2"/>
                     <Link
                       href="/dashboard"
-                      className="block hover:text-accent transition-colors"
+                      className="block hover:text-white transition-colors"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Dashboard
                     </Link>
                     <Link
                       href="/account"
-                      className="block hover:text-accent transition-colors"
+                      className="block hover:text-white transition-colors"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Account
@@ -98,7 +98,7 @@ const Navbar: FC = () => {
                         setDropdownOpen(false);
                         signOut();
                       }}
-                      className="block w-full text-left hover:text-accent transition-colors"
+                      className="block w-full text-left hover:text-white transition-colors"
                     >
                       Logout
                     </button>
@@ -109,7 +109,7 @@ const Navbar: FC = () => {
           ) : (
             <button
               onClick={() => {router.push('/auth/signin')}}
-              className="text-white font-semibold bg-accent hover:bg-accent transition-all hover:scale-105 px-4 py-1 rounded-full"
+              className="text-white font-semibold bg-accent hover:bg-white transition-all hover:scale-105 px-4 py-1 rounded-full"
             >
               Login
             </button>
