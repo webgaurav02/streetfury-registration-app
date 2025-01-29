@@ -123,7 +123,6 @@ const PersonalDataPage = () => {
           </div>
         </div>
         <div>
-          
         </div>
       </div>
     </div>
