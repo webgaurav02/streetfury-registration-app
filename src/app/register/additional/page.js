@@ -12,6 +12,10 @@ import Loading from '../../components/Loading';
 import Link from 'next/link';
 
 
+//MUI Icons
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+
 
 
 
@@ -36,6 +40,7 @@ const AdditionalDataPage = () => {
     pitch: '',
     portfolio: '',
     info: '',
+    registered: false
   });
 
   const [otherSport, setOtherSport] = useState('')
@@ -48,11 +53,11 @@ const AdditionalDataPage = () => {
     // Fetch user-specific data
     const fetchUserData = async () => {
 
-      if (!session?.user?.id || dataFetched) return;
+      if (!session?.user?.email || dataFetched) return;
 
       try {
         setIsLoading(true);
-        const res = await fetch(`/api/participant/get-info/${session.user.id}`, {
+        const res = await fetch(`/api/participant/get-info/${session.user.email}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -60,16 +65,20 @@ const AdditionalDataPage = () => {
         });
         if (res.ok) {
           const data = await res.json();
-          // console.log(data)
+          if(!data.participant.personalDone){
+            router.push('/register/personal');
+          }
           setUserData(prevState => ({
             ...prevState,
-            sport: data.participant.sport || '',
+            sport: data.participant.sport.trim() || '',
             instagram: data.participant.instagram || '',
             youtube: data.participant.youtube || '',
             pitch: data.participant.pitch || '',
             portfolio: data.participant.portfolio || '',
             info: data.participant.info || '',
+            registered: data.participant.registered || false,
           }));
+
           setIsLoading(false);
           setDataFetched(true);
         } else {
@@ -93,7 +102,14 @@ const AdditionalDataPage = () => {
     if (!userData.sport) newErrors.sport = 'Select a Sport';
     if (!userData.instagram || !urlRegex.test(userData.instagram)) newErrors.instagram = 'Enter a valid Instagram URL.';
     if (userData.youtube && !urlRegex.test(userData.youtube)) newErrors.youtube = 'Enter a valid YouTube URL.';
-    if (!userData.pitch) newErrors.pitch = 'Please write a Short Pitch';
+    if (!userData.pitch) {
+      newErrors.pitch = 'Please write a Short Pitch';
+    } else {
+      const words = userData.pitch.trim().split(/\s+/).filter(word => word.length > 0);
+      if (words.length > 100) {
+        newErrors.pitch = 'Pitch must not exceed 100 words';
+      }
+    }
     if (!userData.portfolio || !urlRegex.test(userData.portfolio)) newErrors.portfolio = 'Enter a valid Google Drive URL.';
 
     setErrors(newErrors);
@@ -109,7 +125,7 @@ const AdditionalDataPage = () => {
 
     try {
       setIsLoading(true);
-      const res = await fetch(`/api/participant/save-info/additional/${session.user.id}`, {
+      const res = await fetch(`/api/participant/save-info/additional/${session.user.email}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -130,7 +146,7 @@ const AdditionalDataPage = () => {
       router.push("/register/summary");
 
     } catch (error) {
-      setIsLoading(true);
+      setIsLoading(false);
       console.error('Error submitting form:', error);
       alert('Submission failed. Please try again.');
     }
@@ -151,6 +167,7 @@ const AdditionalDataPage = () => {
               value={userData.sport}
               onChange={(e) => setUserData({ ...userData, sport: e.target.value })}
               className={`w-full p-2 border-2 ${errors.sport ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             >
               <option value="">Select</option>
               <option value="BMX">BMX</option>
@@ -165,6 +182,7 @@ const AdditionalDataPage = () => {
               value={otherSport}
               onChange={(e) => setOtherSport(e.target.value)}
               className={`w-full p-2 border-b-2 bg-[#f8f8f8] ${errors.otherSport ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             />}
             {errors.sport && <p className="text-red-500 text-sm">{errors.sport}</p>}
           </div>
@@ -178,6 +196,7 @@ const AdditionalDataPage = () => {
                 value={userData.instagram}
                 onChange={(e) => setUserData({ ...userData, instagram: e.target.value })}
                 className={`w-full p-2 placeholder:text-gray-400 border-2 ${errors.instagram ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+                disabled={userData.registered}
               />
             </div>
             {errors.instagram && <p className="text-red-500 text-sm">{errors.instagram}</p>}
@@ -192,6 +211,7 @@ const AdditionalDataPage = () => {
                 value={userData.youtube}
                 onChange={(e) => setUserData({ ...userData, youtube: e.target.value })}
                 className={`w-full p-2 placeholder:text-gray-400 border-2 ${errors.youtube ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+                disabled={userData.registered}
               />
             </div>
           </div>
@@ -203,6 +223,7 @@ const AdditionalDataPage = () => {
               rows={8}
               onChange={(e) => setUserData({ ...userData, pitch: e.target.value })}
               className={`w-full p-2 border-2 ${errors.pitch ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             />
             {errors.pitch && <p className="text-red-500 text-sm">{errors.pitch}</p>}
           </div>
@@ -218,6 +239,7 @@ const AdditionalDataPage = () => {
                 value={userData.portfolio}
                 onChange={(e) => setUserData({ ...userData, portfolio: e.target.value })}
                 className={`w-full p-2 placeholder:text-gray-400 border-2 ${errors.portfolio ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+                disabled={userData.registered}
               />
               {errors.portfolio && <p className="text-red-500 text-sm">{errors.portfolio}</p>}
             </div>
@@ -229,15 +251,16 @@ const AdditionalDataPage = () => {
               value={userData.city}
               onChange={(e) => setUserData({ ...userData, city: e.target.value })}
               className={`w-full p-2 border-2 ${errors.city ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             />
             {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
           </div>
 
           <div className='flex flex-row justify-between text-right pt-20'>
             <Link href="/register/personal"
-              className="w-40 bg-gray-300 text-white text-center py-3 rounded hover:bg-orange-700 font-black"
+              className=" bg-gray-300 px-3 pl-5 text-white text-center py-3 rounded hover:bg-orange-700 font-black"
             >
-              Back
+              <ArrowBackIosIcon />
             </Link>
             <button
               type="submit"

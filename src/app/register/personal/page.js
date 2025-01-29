@@ -99,6 +99,7 @@ const PersonalDataPage = () => {
     portfolio: '',
     email: '',
     phone: '',
+    registered: false
   });
 
   const [errors, setErrors] = useState({});
@@ -109,11 +110,11 @@ const PersonalDataPage = () => {
     // Fetch user-specific data
     const fetchUserData = async () => {
 
-      if (!session?.user?.id || dataFetched) return;
+      if (!session?.user?.email || dataFetched) return;
 
       try {
         setIsLoading(true);
-        const res = await fetch(`/api/participant/get-info/${session.user.id}`, {
+        const res = await fetch(`/api/participant/get-info/${session.user.email}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -121,7 +122,6 @@ const PersonalDataPage = () => {
         });
         if (res.ok) {
           const data = await res.json();
-          // console.log(data)
           setUserData(prevState => ({
             ...prevState,
             firstname: data.participant.firstname || '',
@@ -136,6 +136,7 @@ const PersonalDataPage = () => {
             portfolio: data.participant.portfolio || '',
             email: data.participant.email || '',
             phone: data.participant.phone || '',
+            registered: data.participant.registered || false,
           }));
           setIsLoading(false);
           setDataFetched(true);
@@ -184,7 +185,7 @@ const PersonalDataPage = () => {
 
       setIsLoading(true);
 
-      const res = await fetch(`/api/participant/save-info/personal/${session.user.id}`, {
+      const res = await fetch(`/api/participant/save-info/personal/${session.user.email}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -239,6 +240,7 @@ const PersonalDataPage = () => {
               value={userData.firstname}
               onChange={(e) => setUserData({ ...userData, firstname: e.target.value })}
               className={`w-full p-2 border-2 ${errors.firstname ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             />
             {errors.firstname && <p className="text-red-500 text-sm">{errors.firstname}</p>}
           </motion.div>
@@ -249,6 +251,7 @@ const PersonalDataPage = () => {
               value={userData.lastname}
               onChange={(e) => setUserData({ ...userData, lastname: e.target.value })}
               className={`w-full p-2 border-2 ${errors.lastname ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             />
             {errors.lastname && <p className="text-red-500 text-sm">{errors.lastname}</p>}
           </motion.div>
@@ -259,6 +262,7 @@ const PersonalDataPage = () => {
               value={userData.dob}
               onChange={(e) => setUserData({ ...userData, dob: e.target.value })}
               className={`w-full p-2 border-2 ${errors.dob ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             />
             {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
           </motion.div>
@@ -268,6 +272,7 @@ const PersonalDataPage = () => {
               value={userData.gender}
               onChange={(e) => setUserData({ ...userData, gender: e.target.value })}
               className={`w-full p-2 border-2 ${errors.gender ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             >
               <option value="">Select</option>
               <option value="Male">Male</option>
@@ -296,6 +301,7 @@ const PersonalDataPage = () => {
                 value={userData.phone}
                 onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
                 className={`w-full p-2 border-2 ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+                disabled={userData.registered}
               />
             </div>
             {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
@@ -307,6 +313,7 @@ const PersonalDataPage = () => {
               value={userData.city}
               onChange={(e) => setUserData({ ...userData, city: e.target.value })}
               className={`w-full p-2 border-2 ${errors.city ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             />
             {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
           </motion.div>
@@ -318,6 +325,7 @@ const PersonalDataPage = () => {
               value={userData.state}
               onChange={(e) => setUserData({ ...userData, state: e.target.value })}
               className={`w-full p-2 border-2 ${errors.state ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
             >
               <option value="">Select</option>
               {statesAndUTs.map((state) => (

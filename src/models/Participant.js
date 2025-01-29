@@ -28,6 +28,8 @@ const participantSchema = new Schema(
     registered: { type: Boolean, required: true, default: false },
     otp: { type: String },
     otpExpiry: { type: Date },
+    personalDone: { type: Boolean, default: false },
+    additionalDone: { type: Boolean, default: false },
   },
   { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } }
 );

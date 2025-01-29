@@ -24,7 +24,7 @@ export async function PUT(req, { params }) {
 
         await connectMongo(); // Connect to the database
 
-        const user = await Participant.findById(id);
+        const user = await Participant.findOne({email: id});
 
         if (!user) {
             return NextResponse.json(
@@ -39,10 +39,11 @@ export async function PUT(req, { params }) {
         user.pitch = pitch;
         user.portfolio = portfolio;
         user.info = info;
+        user.additionalDone = true;
 
         await user.save();
 
-        return NextResponse.json({ participant: user }, { status: 200 });
+        return NextResponse.json({ status: 200 });
 
     } catch (error) {
         console.error('Error fetching participant:', error);

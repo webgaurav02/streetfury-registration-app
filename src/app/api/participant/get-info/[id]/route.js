@@ -6,16 +6,18 @@ export async function GET(req, { params }) {
     try {
         const { id } = await params; // Extract the `id` from the dynamic route
 
+        console.log(id)
+
         if (!id) {
             return NextResponse.json(
-                { error: 'Participant ID is required' },
+                { error: 'Participant Email is required' },
                 { status: 400 }
             );
         }
 
         await connectMongo(); // Connect to the database
 
-        const user = await Participant.findById(id);
+        const user = await Participant.findOne({email: id});
 
         if (!user) {
             return NextResponse.json(

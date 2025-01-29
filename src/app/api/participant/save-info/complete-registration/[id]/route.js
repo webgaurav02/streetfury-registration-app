@@ -12,19 +12,9 @@ export async function PUT(req, { params }) {
                 { status: 400 }
             );
         }
-
-        const { firstname, lastname, dob, gender, city, state, phone } = await req.json();
-
-        if (!firstname || !lastname || !dob || !gender || !city || !state || !phone) {
-            return NextResponse.json(
-                { error: 'All fields are required' },
-                { status: 400 }
-            );
-        }
-
         await connectMongo(); // Connect to the database
 
-        const user = await Participant.findOne({email: id});
+        const user = await Participant.findOne({ email: id });
 
         if (!user) {
             return NextResponse.json(
@@ -33,14 +23,7 @@ export async function PUT(req, { params }) {
             );
         }
 
-        user.firstname = firstname;
-        user.lastname = lastname;
-        user.dob = dob;
-        user.gender = gender;
-        user.city = city;
-        user.state = state;
-        user.phone = phone;
-        user.personalDone = true;
+        user.registered = true;
 
         await user.save();
 
