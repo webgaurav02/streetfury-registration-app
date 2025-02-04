@@ -40,10 +40,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      if (packageId)
-        router.push(`/package/${packageId}`);
-      else
-        router.push('/')
+      router.push("/")
     }
   }, [status, router]);
 

@@ -1,3 +1,5 @@
+'use client';
+
 // components/Navbar.js
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -5,14 +7,13 @@ import Link from "next/link";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FC } from 'react';
 
-
 //Assets
 import profileimg from "../../../public/profile_white.png";
-import logo_white from "../../../public/Logo/logo_white.png";
+import logo_wordmark from "../../../public/Logo/Logo_wordmark.svg";
 
 //Fonts
 import { Bree_Serif, Bungee, Racing_Sans_One } from 'next/font/google';
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import Loading from "./Loading";
 
@@ -26,6 +27,8 @@ const Navbar: FC = () => {
   const router = useRouter();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const pathname = usePathname();
+
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev);
   };
@@ -34,21 +37,23 @@ const Navbar: FC = () => {
     return <Loading />
   }
 
+  if(pathname === '/') return ;
+
   return (
-    <nav className=" w-screen bg-black p-4 ">
+    <nav className=" w-screen bg-none p-4 ">
       <div className="md:max-w-full max-w-7xl mx-auto flex justify-between items-center">
         <Link href="/" className={`text-2xl font-black font-anton`}>
           <div className="flex flex-row gap-2 justify-center items-center">
             <Image 
-              src={logo_white}
+              src={logo_wordmark}
               alt="MINUS01 Logo"
               width="0"
               height="0"
               sizes="100vw"
-              className="w-[50px] h-fit"
+              className="w-[150px] h-fit"
 
             />
-            <p className="md:block hidden text-white">minus<span className="text-primary">01</span></p>
+            {/* <p className="md:block hidden text-white">minus<span className="text-primary">01</span></p> */}
           </div>
         </Link>
 

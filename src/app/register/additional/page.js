@@ -156,7 +156,7 @@ const AdditionalDataPage = () => {
 
 
   return (
-    <div className='min-h-screen bg-[#f8f8f8] md:px-60 px-10 py-20'>
+    <div className='min-h-screen bg-none md:px-60 px-10 py-20'>
       {isLoading && <Loading />}
       <h1 className='md:text-4xl text-2xl font-anton font-bold'>Additional Information</h1>
       <div className='py-10 md:max-w-[30vw]'>

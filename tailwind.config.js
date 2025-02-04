@@ -21,6 +21,7 @@ export default {
        },
       fontFamily: {
         anton: ['Anton', 'sans-serif'],
+        bebasNeue: ['Bebas Neue', 'sans-serif'],
       },
     },
   },
