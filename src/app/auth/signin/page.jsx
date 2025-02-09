@@ -79,13 +79,13 @@ export default function SignIn() {
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <h1 className="text-3xl font-bold font-inter mb-10">minus<span className="text-primary">01</span></h1>
+            <h1 className="text-3xl font-anton mb-10">MINUS01</h1>
             <h1 className="text-xl font-bold font-inter uppercase mb-10">Sign In</h1>
 
             <div className="pb-5">
               {/* Using react-social-login-buttons */}
               {providers.map((provider) => (
-                <div className="login-with-google-btn cursor-pointer" key={provider.id} onClick={() => signIn(provider.id)}>
+                <div className="login-with-google-btn cursor-pointer border border-black py-1 rounded-md" key={provider.id} onClick={() => signIn(provider.id)}>
                   Sign in with {provider.name}
                 </div>
               ))}

@@ -27,7 +27,7 @@ const LayoutComponent = ({ children }) => {
                 {pathname !== 'auth' && <Navbar />}
                 <div className="relative">
                     {/* Background */}
-                    <Image
+                    {/* <Image
                         src={Hero_bg}
                         alt="Streetfury Hero Section"
                         height="0"
@@ -35,7 +35,7 @@ const LayoutComponent = ({ children }) => {
                         sizes='100svw'
                         className='h-full w-[100svw] object-cover absolute -z-20 left-0 top-0 opacity-40'
                         priority
-                    />
+                    /> */}
 
                     {/* Grain */}
                     {/* <Image

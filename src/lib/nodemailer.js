@@ -75,3 +75,46 @@ export const sendOtpEmail = async (email, emailHtml) => {
         console.error('Error sending OTP email:', error);
     }
 }
+
+export const sendConfirmationEmail = async (email, emailHtml, termsOfParticipation, cancellationAndRefund) => {
+
+    try {
+        // Create the transporter
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        //Set attachments
+        const attachments = [
+            {
+                filename: `Terms of Participation.pdf`,
+                content: termsOfParticipation,
+                contentType: 'application/pdf',
+            },
+            {
+                filename: `Cancellation and Refund.pdf`,
+                content: cancellationAndRefund,
+                contentType: 'application/pdf',
+            },
+        ]
+
+        // Set email options
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: 'STREETFURY: Registration Successful!',
+            html: emailHtml,
+            attachments: attachments,
+        };
+
+        // Send the email
+        await transporter.sendMail(mailOptions);
+        console.log('OTP email sent successfully.');
+    } catch (error) {
+        console.error('Error sending OTP email:', error);
+    }
+}

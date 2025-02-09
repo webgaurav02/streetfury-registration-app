@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fonts */
+@import '@fontsource/anton';
+@import '@fontsource/assistant';
+@import '@fontsource/bebas-neue';
+@import '@fontsource/poppins';
+
 body {
   color: black;
   background: white;

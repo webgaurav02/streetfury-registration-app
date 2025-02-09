@@ -7,9 +7,9 @@ export default function Footer() {
         <div className="flex flex-wrap justify-between items-center space-y-10">
           {/* Logo and Description */}
           <div className="w-full md:w-1/3 mb-4 md:mb-0">
-            <h2 className="text-4xl font-anton font-black">minus<span className="text-primary">01</span></h2>
+            <h2 className="text-4xl font-anton font-thin">MINUS01</h2>
             <p className="mt-2 text-gray-400 pr-10">
-            Minus 01 is where culture, creativity, and performance unite for those who dare
+            MINUS01 is where culture, creativity, and performance unite for those who dare
             to move differently
             </p>
           </div>
@@ -32,14 +32,6 @@ export default function Footer() {
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Services
                 </a>
               </li>
               <li>
@@ -105,7 +97,7 @@ export default function Footer() {
 
         {/* Copyright Section */}
         <div className="mt-8 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} minus01. All rights reserved.
+          © {new Date().getFullYear()} MINUS01. All rights reserved.
         </div>
       </div>
     </footer>

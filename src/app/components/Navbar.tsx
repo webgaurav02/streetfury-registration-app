@@ -9,6 +9,7 @@ import { FC } from 'react';
 
 //Assets
 import profileimg from "../../../public/profile_white.png";
+import PersonIcon from '@mui/icons-material/Person';
 import logo_wordmark from "../../../public/Logo/Logo_wordmark.svg";
 
 //Fonts
@@ -42,18 +43,9 @@ const Navbar: FC = () => {
   return (
     <nav className=" w-screen bg-none p-4 ">
       <div className="md:max-w-full max-w-7xl mx-auto flex justify-between items-center">
-        <Link href="/" className={`text-2xl font-black font-anton`}>
+        <Link href="/" className={`text-2xl font-anton`}>
           <div className="flex flex-row gap-2 justify-center items-center">
-            <Image 
-              src={logo_wordmark}
-              alt="MINUS01 Logo"
-              width="0"
-              height="0"
-              sizes="100vw"
-              className="w-[150px] h-fit"
-
-            />
-            {/* <p className="md:block hidden text-white">minus<span className="text-primary">01</span></p> */}
+            <p className="font-thin text-4xl">MINUS01</p>
           </div>
         </Link>
 
@@ -61,14 +53,15 @@ const Navbar: FC = () => {
           {session?.user ? (
             <div className="relative">
               <button onClick={toggleDropdown} className="flex items-center space-x-2 focus:outline-none">
-                <Image
+                {/* <Image
                   src={session.user.image || profileimg}
                   width="0"
                   height="0"
                   sizes="100vw"
                   alt="User Avatar"
                   className="w-10 h-10 rounded-full"
-                />
+                /> */}
+                <PersonIcon sx={{fontSize: "3rem"}}/>
                 {/* <span className="text-white">{session.user.name}</span> */}
               </button>
 
@@ -80,23 +73,23 @@ const Navbar: FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    {...{ className: "absolute right-0 mt-2 w-48 px-4 py-5 space-y-2 bg-secondary text-text shadow-md rounded-lg z-50" }}
+                    {...{ className: "absolute right-0 mt-2 w-48 px-4 py-5 space-y-2 bg-white border-[0.1px] text-text shadow-md rounded-lg z-50" }}
                   >
-                    <p>Hi! <b>{session.user?.name?.split(' ')[0]}</b></p>
+                    <p className="text-xl">Hi! <b>{session.user?.name?.split(' ')[0]}</b></p>
                     <hr className=" h-[0.1px] border-text w-full my-2"/>
-                    <Link
+                    {/* <Link
                       href="/dashboard"
                       className="block hover:text-white transition-colors"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Dashboard
-                    </Link>
+                    </Link> */}
                     <button
                       onClick={() => {
                         setDropdownOpen(false);
                         signOut();
                       }}
-                      className="block w-full text-left hover:text-white transition-colors"
+                      className="block w-full text-left hover:text-primary transition-colors"
                     >
                       Logout
                     </button>

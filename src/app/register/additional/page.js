@@ -156,17 +156,17 @@ const AdditionalDataPage = () => {
 
 
   return (
-    <div className='min-h-screen bg-none md:px-60 px-10 py-20'>
+    <div className='min-h-screen bg-white md:pl-60 md:pr-10 px-10 py-20'>
       {isLoading && <Loading />}
-      <h1 className='md:text-4xl text-2xl font-anton font-bold'>Additional Information</h1>
-      <div className='py-10 md:max-w-[30vw]'>
+      <h1 className='md:text-5xl text-2xl font-anton'>Additional Information</h1>
+      <div className='py-10 '>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-bold mb-2">Sport of Interest <span className='text-red-600'>&#42;</span></label>
+            <label className="block text-sm mb-2 mt-10">Sport of Interest <span className='text-red-600'>&#42;</span></label>
             <select
               value={userData.sport}
               onChange={(e) => setUserData({ ...userData, sport: e.target.value })}
-              className={`w-full p-2 border-2 ${errors.sport ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              className={`w-full p-2 border border-opacity-70 ${errors.sport ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
               disabled={userData.registered}
             >
               <option value="">Select</option>
@@ -181,76 +181,76 @@ const AdditionalDataPage = () => {
               placeholder='Specify'
               value={otherSport}
               onChange={(e) => setOtherSport(e.target.value)}
-              className={`w-full p-2 border-b-2 bg-[#f8f8f8] ${errors.otherSport ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              className={`w-full p-2 border-b border-opacity-70 bg-[#f8f8f8] ${errors.otherSport ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
               disabled={userData.registered}
             />}
             {errors.sport && <p className="text-red-500 text-sm">{errors.sport}</p>}
           </div>
           <div>
-            <label className="block text-sm font-bold mb-2">Instagram <span className='text-red-600'>&#42;</span></label>
+            <label className="block text-sm mb-2 mt-10">Instagram <span className='text-red-600'>&#42;</span></label>
             <div className='flex flex-row items-center'>
-              <div className='bg-gray-300 p-2 border-l-2 border-t-2 border-b-2 border-gray-300 rounded-l'><InstagramIcon sx={{ fontSize: "1.2rem" }} /></div>
+              <div className=' p-2 border-l border-t border-b border-opacity-70 border-gray-300 rounded-l'><InstagramIcon sx={{ fontSize: "1.2rem" }} /></div>
               <input
                 type="text"
                 placeholder='eg: https://www.instagram.com/streetfuryofficial/'
                 value={userData.instagram}
                 onChange={(e) => setUserData({ ...userData, instagram: e.target.value })}
-                className={`w-full p-2 placeholder:text-gray-400 border-2 ${errors.instagram ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+                className={`w-full p-2 placeholder:text-gray-400 border border-opacity-70 ${errors.instagram ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
                 disabled={userData.registered}
               />
             </div>
             {errors.instagram && <p className="text-red-500 text-sm">{errors.instagram}</p>}
           </div>
           <div>
-            <label className="block text-sm font-bold mb-2">YouTube </label>
+            <label className="block text-sm mb-2 mt-10">YouTube </label>
             <div className='flex flex-row items-center'>
-              <div className='bg-gray-300 p-2 border-l-2 border-t-2 border-b-2 border-gray-300 rounded-l'><YouTubeIcon sx={{ fontSize: "1.2rem" }} /></div>
+              <div className='p-2 border-l border-t border-b border-gray-300 border-opacity-70 rounded-l'><YouTubeIcon sx={{ fontSize: "1.2rem" }} /></div>
               <input
                 type="text"
                 placeholder='eg: https://www.youtube.com/@minus01'
                 value={userData.youtube}
                 onChange={(e) => setUserData({ ...userData, youtube: e.target.value })}
-                className={`w-full p-2 placeholder:text-gray-400 border-2 ${errors.youtube ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+                className={`w-full p-2 placeholder:text-gray-400 border border-opacity-70 ${errors.youtube ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
                 disabled={userData.registered}
               />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-bold mb-2">Why Should You Be Selected? <span className='text-red-600'>&#42;</span></label>
+            <label className="block te mb-2 mt-10">Why Should You Be Selected? <span className='text-red-600'>&#42;</span></label>
             <label className="block text-xs font-normal mb-2">Short Pitch - 100 words max</label>
             <textarea
               value={userData.pitch}
               rows={8}
               onChange={(e) => setUserData({ ...userData, pitch: e.target.value })}
-              className={`w-full p-2 border-2 ${errors.pitch ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              className={`w-full p-2 border border-opacity-70 ${errors.pitch ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
               disabled={userData.registered}
             />
             {errors.pitch && <p className="text-red-500 text-sm">{errors.pitch}</p>}
           </div>
           <div>
-            <label className="block text-sm font-bold mb-2">Upload Your Portfolio:<span className='text-red-600'>&#42;</span></label>
+            <label className="block text-sm mb-2 mt-10">Upload Your Portfolio:<span className='text-red-600'>&#42;</span></label>
             <label className="block text-xs font-normal mb-2">Google Drive link to upload videos or images (limit: 100 MB, supported
               formats: MP4, JPG, PNG).</label>
             <div className='flex flex-row items-center'>
-              <div className='bg-gray-300 p-2 border-l-2 border-t-2 border-b-2 border-gray-300 rounded-l'><AddToDriveIcon sx={{ fontSize: "1.2rem" }} /></div>
+              <div className=' p-2 border-l border-t border-b border-gray-300 border-opacity-70 rounded-l'><AddToDriveIcon sx={{ fontSize: "1.2rem" }} /></div>
               <input
                 type="text"
                 placeholder='eg: https://drive.google.com/drive/'
                 value={userData.portfolio}
                 onChange={(e) => setUserData({ ...userData, portfolio: e.target.value })}
-                className={`w-full p-2 placeholder:text-gray-400 border-2 ${errors.portfolio ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+                className={`w-full p-2 placeholder:text-gray-400 border border-opacity-70 ${errors.portfolio ? 'border-red-500' : 'border-gray-300'} rounded-r focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
                 disabled={userData.registered}
               />
-              {errors.portfolio && <p className="text-red-500 text-sm">{errors.portfolio}</p>}
             </div>
+              {errors.portfolio && <p className="text-red-500 text-sm">{errors.portfolio}</p>}
           </div>
           <div>
-            <label className="block text-sm font-bold mb-2">How did you hear about us?</label>
+            <label className="block text-sm mb-2 mt-10">How did you hear about us?</label>
             <input
               type="text"
               value={userData.city}
               onChange={(e) => setUserData({ ...userData, city: e.target.value })}
-              className={`w-full p-2 border-2 ${errors.city ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              className={`w-full p-2 border border-opacity-70 ${errors.city ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
               disabled={userData.registered}
             />
             {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
@@ -258,13 +258,13 @@ const AdditionalDataPage = () => {
 
           <div className='flex flex-row justify-between text-right pt-20'>
             <Link href="/register/personal"
-              className=" bg-gray-300 px-3 pl-5 text-white text-center py-3 rounded hover:bg-orange-700 font-black"
+              className=" px-3 pl-5 border border-opacity-70 text-black text-center py-3 rounded hover:bg-orange-700 hover:text-white"
             >
               <ArrowBackIosIcon />
             </Link>
             <button
               type="submit"
-              className="w-40 bg-primary text-white px-10 py-3 rounded hover:bg-orange-700 font-black"
+              className="w-40 bg-[#ee5d39] text-white px-10 py-3 rounded hover:bg-orange-700 font-black"
             >
               Next
             </button>

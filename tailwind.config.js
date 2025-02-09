@@ -22,6 +22,8 @@ export default {
       fontFamily: {
         anton: ['Anton', 'sans-serif'],
         bebasNeue: ['Bebas Neue', 'sans-serif'],
+        assistant: ['Assistant', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif']
       },
     },
   },
