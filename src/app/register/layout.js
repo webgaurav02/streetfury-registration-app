@@ -51,10 +51,10 @@ export default function RegistrationRootLayout({ children }) {
                     </div>
                     <hr className='md:w-[20svw] my-5'/>
                     <div className='flex flex-col space-y-2'>
-                        <Link className='hover:font-bold' href='/terms-of-participation'>Terms of Participation</Link>
-                        <Link className='hover:font-bold' href='/terms-of-participation'>Cancellations &amp; Refund</Link>
-                        <Link className='hover:font-bold' href='/terms-of-use'>Terms of Use</Link>
-                        <Link className='hover:font-bold' href='/terms-of-use'>Privacy Policy</Link>
+                        <Link className='hover:font-bold' target='_blank' rel='noreferrer noopener' href='/terms-of-participation'>Terms of Participation</Link>
+                        <Link className='hover:font-bold' target='_blank' rel='noreferrer noopener' href='/terms-of-participation'>Cancellations &amp; Refund</Link>
+                        <Link className='hover:font-bold' target='_blank' rel='noreferrer noopener' href='/terms-of-use'>Terms of Use</Link>
+                        <Link className='hover:font-bold' target='_blank' rel='noreferrer noopener' href='/privacy-policy'>Privacy Policy</Link>
                     </div>
                 </div>
             </div>
