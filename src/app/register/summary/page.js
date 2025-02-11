@@ -29,14 +29,14 @@ const SummaryPage = () => {
 
   const [termsAccepted1, setTermsAccepted1] = useState(false);
   const [termsAccepted2, setTermsAccepted2] = useState(false);
-  const [termsAccepted3, setTermsAccepted3] = useState(false);
-  const [termsAccepted4, setTermsAccepted4] = useState(false);
-  const [termsAccepted5, setTermsAccepted5] = useState(false);
-  const [termsAccepted6, setTermsAccepted6] = useState(false);
-  const [termsAccepted7, setTermsAccepted7] = useState(false);
-  const [termsAccepted8, setTermsAccepted8] = useState(false);
-  const [termsAccepted9, setTermsAccepted9] = useState(false);
-  const [termsAccepted10, setTermsAccepted10] = useState(false);
+  // const [termsAccepted3, setTermsAccepted3] = useState(false);
+  // const [termsAccepted4, setTermsAccepted4] = useState(false);
+  // const [termsAccepted5, setTermsAccepted5] = useState(false);
+  // const [termsAccepted6, setTermsAccepted6] = useState(false);
+  // const [termsAccepted7, setTermsAccepted7] = useState(false);
+  // const [termsAccepted8, setTermsAccepted8] = useState(false);
+  // const [termsAccepted9, setTermsAccepted9] = useState(false);
+  // const [termsAccepted10, setTermsAccepted10] = useState(false);
 
   const { data: session, status } = useSession();
   const [dataFetched, setDataFetched] = useState(false);
@@ -209,53 +209,18 @@ const SummaryPage = () => {
           <hr className='my-10' />
           <form onSubmit={handleSubmit} className="space-y-4">
 
-            <div className='flex flex-row items-start space-x-4 justify-start'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted1} onChange={() => setTermsAccepted1(!termsAccepted1)} />
+            <div className='flex flex-row items-start justify-start'>
+              <input type='checkbox' className='mr-2 mt-1 accent-black' checked={termsAccepted1} onChange={() => setTermsAccepted1(!termsAccepted1)} />
               <label className='text-sm text-black'>I agree that I am 16 years of age or older in compliance with the age restriction terms of this event.</label>
             </div>
 
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted2} onChange={() => setTermsAccepted2(!termsAccepted2)} />
-              <label className='text-sm text-black'>I confirm that I am in the appropriate physical and mental condition and possess the required skills to participate in the event. I understand that participation involves a degree of risk. I agree that neither the organiser (Minus01) nor any companies involved will be held responsible for any injury I may sustain. If I cause damage to others or their property, I will accept responsibility and ensure Minus01 or other companies involved do not incur any loss in this regard.</label>
-            </div>
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted3} onChange={() => setTermsAccepted3(!termsAccepted3)} />
-              <label className='text-sm text-black'>I agree to adhere to the organiser&apos;s terms and conditions for the event and follow all safety protocols and instructions after completing registration and being selected for participation.</label>
-            </div>
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted4} onChange={() => setTermsAccepted4(!termsAccepted4)} />
-              <label className='text-sm text-black'>I confirm that my equipment (including sports gear, safety equipment, and any devices) is in proper working order, well-maintained, and suitable for the event. I am aware that I will only be allowed to participate after undergoing a full inspection of the site, track, equipment, and safety measures.</label>
-            </div>
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted5} onChange={() => setTermsAccepted5(!termsAccepted5)} />
-              <label className='text-sm text-black'>I understand that the organiser reserves the right to refuse my participation at any time if necessary.</label>
-            </div>
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted6} onChange={() => setTermsAccepted6(!termsAccepted6)} />
-              <label className='text-sm text-black'>I grant Minus01, or authorised third parties, the right to capture and use audio, video recordings, and photographs (“Material”) from the event. Minus01 may use my name, image, voice, appearance, and performance for any purpose, in all media, indefinitely.</label>
-            </div>
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted7} onChange={() => setTermsAccepted7(!termsAccepted7)} />
-              <label className='text-sm text-black'>I acknowledge that Minus01 may use, broadcast, display, or reproduce the Material in any media, and may alter or modify it as needed. I accept that Minus01 may transfer these rights to third parties without the need for my approval. I will not be compensated or financially rewarded for my appearance in the Material.</label>
-            </div>
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted8} onChange={() => setTermsAccepted8(!termsAccepted8)} />
-              <label className='text-sm text-black'>I am permitted to record Participant Content (photos, videos) for personal use, such as sharing on my website or social media. I acknowledge that Minus01 holds the intellectual property and media rights to the event and will provide Minus01 access to the Participant Content upon request. Commercial use of the Participant Content is subject to prior consent from Minus01.</label>
-            </div>
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted9} onChange={() => setTermsAccepted9(!termsAccepted9)} />
-              <label className='text-sm text-black'>I acknowledge that my participation in this event is voluntary and agree not to demand any rewards, compensation, or benefits by forceful or unfair means.</label>
-            </div>
-            <div className='flex items-start space-x-2'>
-              <input type='checkbox' className=' mt-1 accent-black' checked={termsAccepted10} onChange={() => setTermsAccepted10(!termsAccepted10)} />
-              <label className='text-sm text-black'>By registering for this event, I agree to receive promotional emails from Minus01 regarding future events, offers, product launches, etc.</label>
+            <div className='flex items-start'>
+              <input type='checkbox' className='mr-2 mt-1 accent-black' checked={termsAccepted2} onChange={() => setTermsAccepted2(!termsAccepted2)} />
+              <label className='text-sm text-black'>By registering, I confirm that I acknowledge receiving an account and automatically agree to the General <Link href='/terms-of-use' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Terms of Use</Link>, <Link href='/privacy-policy' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Privacy Policy</Link>, <Link href='/terms-of-participation' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Participation Terms</Link>, and <Link href='/registration-terms' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Registration Terms</Link>. I understand that my personal data will be processed in accordance with the platform's <Link href='/privacy-policy' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Privacy Policy</Link>.</label>
             </div>
 
-            {/* <span className='text-sm text-[#737576]'></span>
-          <label className='flex items-start space-x-2'>
-            <input type='checkbox' className='form-checkbox w-[50px] h-[50px]' checked={participantAccepted} onChange={() => setParticipantAccepted(!participantAccepted)} />
-            <span className='text-sm text-[#737576]'>I have read and accept the Participant Disclaimer.</span>
-          </label> */}
+
+
             <div className='flex md:flex-row flex-col-reverse gap-5 justify-between text-right pt-20'>
               <Link href="/register/additional"
                 className=" bg-gray-300 px-3 pl-5 text-white text-center py-3 rounded hover:bg-orange-700 font-black"
@@ -264,7 +229,7 @@ const SummaryPage = () => {
               </Link>
               <button
                 type="submit"
-                className={`min-w-40 text-white px-10 py-3 rounded hover:bg-orange-700 font-black text-nowrap ${termsAccepted1 && termsAccepted2 && termsAccepted3 && termsAccepted4 && termsAccepted5 && termsAccepted6 && termsAccepted7 && termsAccepted8 && termsAccepted9 && termsAccepted10 &&  !userData.registered  ? 'bg-primary' : 'bg-gray-400 cursor-not-allowed'}`} disabled={(!termsAccepted1 || !termsAccepted2 || !termsAccepted3 || !termsAccepted4 || !termsAccepted5 || !termsAccepted6 || !termsAccepted7 || !termsAccepted8 || !termsAccepted9 || !termsAccepted10) || userData.registered}
+                className={`min-w-40 text-white px-10 py-3 rounded hover:bg-orange-700 font-black text-nowrap ${termsAccepted1 && termsAccepted2 &&  !userData.registered  ? 'bg-primary' : 'bg-gray-400 cursor-not-allowed'}`} disabled={(!termsAccepted1 || !termsAccepted2) || userData.registered}
               >
                 {(userData.registered) ? "Already Registered" : "Complete Registration"}
               </button>
