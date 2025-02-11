@@ -248,12 +248,12 @@ const AdditionalDataPage = () => {
             <label className="block text-sm mb-2 mt-10">How did you hear about us?</label>
             <input
               type="text"
-              value={userData.city}
-              onChange={(e) => setUserData({ ...userData, city: e.target.value })}
-              className={`w-full p-2 border border-opacity-70 ${errors.city ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              value={userData.info}
+              onChange={(e) => setUserData({ ...userData, info: e.target.value })}
+              className={`w-full p-2 border border-opacity-70 ${errors.info ? 'border-red-500' : 'border-gray-300'} rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
               disabled={userData.registered}
             />
-            {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
+            {errors.info && <p className="text-red-500 text-sm">{errors.info}</p>}
           </div>
 
           <div className='flex flex-row justify-between text-right pt-20'>

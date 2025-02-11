@@ -6,6 +6,11 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading';
 import { motion } from 'framer-motion';
 
+
+//MUI Icons
+import SkateboardingIcon from '@mui/icons-material/Skateboarding';
+import PeopleIcon from '@mui/icons-material/People';
+
 const statesAndUTs = [
   "Andhra Pradesh",
   "Arunachal Pradesh",
@@ -78,6 +83,8 @@ const PersonalDataPage = () => {
   const { data: session, status } = useSession();
   const [dataFetched, setDataFetched] = useState(false);
 
+  const [rsvp, setRsvp] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -97,6 +104,7 @@ const PersonalDataPage = () => {
     instagram: '',
     pitch: '',
     portfolio: '',
+    info: '',
     email: '',
     phone: '',
     registered: false
@@ -134,6 +142,7 @@ const PersonalDataPage = () => {
             instagram: data.participant.instagram || '',
             pitch: data.participant.pitch || '',
             portfolio: data.participant.portfolio || '',
+            info: data.participant.info || '',
             email: data.participant.email || '',
             phone: data.participant.phone || '',
             registered: data.participant.registered || false,
@@ -184,25 +193,49 @@ const PersonalDataPage = () => {
 
       setIsLoading(true);
 
-      const res = await fetch(`/api/participant/save-info/personal/${session.user.email}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstname: userData.firstname,
-          lastname: userData.lastname,
-          dob: userData.dob,
-          gender: userData.gender,
-          city: userData.city,
-          state: userData.state,
-          phone: userData.phone,
-        }),
-      });
+      if (!rsvp) {
+        const res = await fetch(`/api/participant/save-info/personal/${session.user.email}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstname: userData.firstname,
+            lastname: userData.lastname,
+            dob: userData.dob,
+            gender: userData.gender,
+            city: userData.city,
+            state: userData.state,
+            phone: userData.phone,
+          }),
+        });
 
-      if (!res.ok) throw new Error('Submission failed');
+        if (!res.ok) throw new Error('Submission failed');
 
-      setIsLoading(false);
+        setIsLoading(false);
 
-      router.push("/register/additional")
+        router.push("/register/additional")
+      }
+      else {
+        const res = await fetch(`/api/rsvp/save-info/${session.user.email}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstname: userData.firstname,
+            lastname: userData.lastname,
+            dob: userData.dob,
+            gender: userData.gender,
+            city: userData.city,
+            state: userData.state,
+            phone: userData.phone,
+            info: userData.info,
+          }),
+        });
+
+        if (!res.ok) throw new Error('Submission failed');
+
+        setIsLoading(false);
+
+        router.push("/register/next-step")
+      }
 
 
     } catch (error) {
@@ -227,6 +260,23 @@ const PersonalDataPage = () => {
         Personal Information
       </motion.h1>
       <div className='py-10 '>
+        <p className='font-assistant mb-2'>Are you a Participant?</p>
+        <div className='w-full flex flex-row gap-5'>
+          <button
+            disabled={userData.registered}
+            onClick={() => setRsvp(false)}
+            className={`${rsvp ? "bg-white font-semibold border border-black w-fit text-black" : "bg-black w-fit text-white"} px-5 py-2 ${userData.registered?"cursor-not-allowed":"cursor-pointer"} rounded-md hover:-translate-y-1 transition-all duration-300 hover:shadow-md`}
+          >
+            <SkateboardingIcon /> PARTICIPANT
+          </button>
+          <button
+            disabled={userData.registered}
+            onClick={() => setRsvp(true)}
+            className={`${!rsvp ? "bg-white font-semibold border border-black w-fit text-black" : "bg-black w-fit text-white"} px-5 py-2 ${userData.registered?"cursor-not-allowed":"cursor-pointer"} rounded-md hover:-translate-y-1 transition-all duration-300 hover:shadow-md`}
+          >
+            <PeopleIcon /> RSVP
+          </button>
+        </div>
         <motion.form onSubmit={handleSubmit} className="space-y-4"
           variants={containerVariants}
           initial="hidden"
@@ -335,12 +385,27 @@ const PersonalDataPage = () => {
             </select>
             {errors.state && <p className="text-red-500 text-sm">{errors.state}</p>}
           </motion.div>
+
+          {rsvp && <motion.div variants={itemVariants}>
+            <label className="block text-sm font mb-2 mt-10">
+              How did you hear about us?
+            </label>
+            <input
+              type="text"
+              value={userData.info}
+              onChange={(e) => setUserData({ ...userData, info: e.target.value })}
+              className={`w-full p-2 border border-opacity-70 ${errors.info ? 'border-red-500' : 'border-gray-300'} bg-white rounded focus:border-primary focus:outline-offset-2 focus:outline-primary/25`}
+              disabled={userData.registered}
+            />
+            {errors.info && <p className="text-red-500 text-sm">{errors.info}</p>}
+          </motion.div>}
+
           <motion.div variants={itemVariants} className='text-right pt-20'>
             <button
               type="submit"
               className="w-40 bg-[#ee5d39] text-white px-10 py-3 rounded hover:bg-orange-700"
             >
-              Next
+              {(rsvp)?"Submit":"Next"}
             </button>
           </motion.div>
         </motion.form>
