@@ -149,7 +149,7 @@ const SummaryPage = () => {
       {isLoading && <Loading />}
       <div className=''>
         <motion.h1
-          className='md:text-5xl text-2xl font-anton'
+          className='md:text-5xl text-2xl font-anton uppercase'
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

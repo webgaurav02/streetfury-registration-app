@@ -158,7 +158,7 @@ const AdditionalDataPage = () => {
   return (
     <div className='min-h-screen bg-white md:pl-60 md:pr-10 px-10 py-20'>
       {isLoading && <Loading />}
-      <h1 className='md:text-5xl text-2xl font-anton'>Additional Information</h1>
+      <h1 className='md:text-5xl text-2xl font-anton uppercase'>Additional Information</h1>
       <div className='py-10 '>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

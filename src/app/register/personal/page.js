@@ -252,7 +252,7 @@ const PersonalDataPage = () => {
     <div className='min-h-screen bg-white md:pl-60 md:pr-10 px-10 py-20 font-assistant'>
       {isLoading && <Loading />}
       <motion.h1
-        className='md:text-5xl text-2xl font-anton'
+        className='md:text-5xl text-2xl font-anton uppercase'
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

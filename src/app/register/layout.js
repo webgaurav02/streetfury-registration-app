@@ -44,7 +44,7 @@ export default function RegistrationRootLayout({ children }) {
                             className='aspect-square h-40 object-cover w-auto shadow-lg rounded-lg'
                         />
                         <div className='space-y-3 font-medium'>
-                            <p className='text-xl font-anton font-thin'>MINUS01 x STREETFURY</p>
+                            <p className='text-xl font-anton font-thin'>MINUS01 STREETJAM</p>
                             <p><b>Venue</b> : NEHU, Shillong, IN</p>
                             <p><b>Date</b> : 05 April, 2025</p>
                         </div>

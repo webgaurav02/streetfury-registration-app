@@ -11,6 +11,7 @@ import { FC } from 'react';
 import profileimg from "../../../public/profile_white.png";
 import PersonIcon from '@mui/icons-material/Person';
 import logo_wordmark from "../../../public/Logo/Logo_wordmark.svg";
+import img_removebg_black from "../../../public/Logo/img-removebg-black.png";
 
 //Fonts
 import { Bree_Serif, Bungee, Racing_Sans_One } from 'next/font/google';
@@ -45,7 +46,16 @@ const Navbar: FC = () => {
       <div className="md:max-w-full max-w-7xl mx-auto flex justify-between items-center">
         <Link href="/" className={`text-2xl font-anton`}>
           <div className="flex flex-row gap-2 justify-center items-center">
-            <p className="font-thin text-4xl">MINUS01</p>
+            <p className="font-thin text-4xl">
+              <Image 
+                src={img_removebg_black}
+                alt="Minus01 logo"
+                height="0"
+                width="0"
+                sizes="100svw"
+                className="h-16 w-auto ml-5"
+              />
+            </p>
           </div>
         </Link>
 
