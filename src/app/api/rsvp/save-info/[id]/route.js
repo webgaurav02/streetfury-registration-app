@@ -12,6 +12,7 @@ export async function POST(req, { params }) {
     try {
         const { id } = await params; // Extract the `id` from the dynamic route
 
+        console.log(id);
         if (!id) {
             return NextResponse.json(
                 { error: 'Rsvp ID is required' },
