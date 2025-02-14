@@ -41,7 +41,17 @@ export async function PUT(req, { params }) {
             state: user.state,
         });
 
+
+
         // Read PDF files from public directory
+        const termsOfRegistrationPath = path.join(
+            process.cwd(),
+            'public',
+            'pdf',
+            'Terms of Registration.pdf'
+        );
+        const termsOfRegistrationBuffer = fs.readFileSync(termsOfRegistrationPath);
+
         const termsOfParticipationPath = path.join(
             process.cwd(),
             'public',
@@ -58,7 +68,7 @@ export async function PUT(req, { params }) {
         );
         const cancellationAndRefundBuffer = fs.readFileSync(cancellationAndRefundPath);
 
-        await sendConfirmationEmail(id, emailHtml, termsOfParticipationBuffer, cancellationAndRefundBuffer);
+        await sendConfirmationEmail(id, emailHtml, termsOfRegistrationBuffer, termsOfParticipationBuffer, cancellationAndRefundBuffer);
 
         return NextResponse.json({ status: 200 });
 

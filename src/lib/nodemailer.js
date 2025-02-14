@@ -76,7 +76,7 @@ export const sendOtpEmail = async (email, emailHtml) => {
     }
 }
 
-export const sendConfirmationEmail = async (email, emailHtml, termsOfParticipation, cancellationAndRefund) => {
+export const sendConfirmationEmail = async (email, emailHtml, termsOfRegistration, termsOfParticipation, cancellationAndRefund) => {
 
     try {
         // Create the transporter
@@ -90,6 +90,11 @@ export const sendConfirmationEmail = async (email, emailHtml, termsOfParticipati
 
         //Set attachments
         const attachments = [
+            {
+                filename: `Terms of Registration.pdf`,
+                content: termsOfRegistration,
+                contentType: 'application/pdf',
+            },
             {
                 filename: `Terms of Participation.pdf`,
                 content: termsOfParticipation,
