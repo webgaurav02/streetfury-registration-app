@@ -3,8 +3,11 @@ import React from 'react'
 const TermsPage = () => {
   return (
     <div className='md:px-60 px-10 py-20'>
-      <h1 className='font-anton text-4xl'>Registration Terms</h1>
+      <h1 className='font-anton text-4xl'>Terms of Registration</h1>
       <ol className='list-decimal space-y-5 mt-16 pl-5'>
+        <li>
+          I agree that I am 16 years of age or older in compliance with the age restriction terms of this event.
+        </li>
         <li>
           I confirm that I am in the appropriate physical and mental condition and possess the required skills to participate in the event. I understand that participation involves a degree of risk. I agree that neither the organiser (Minus01) nor any companies involved will be held responsible for any injury I may sustain. If I cause damage to others or their property, I will accept responsibility and ensure Minus01 or other companies involved do not incur any loss in this regard.
         </li>

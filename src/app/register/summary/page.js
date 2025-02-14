@@ -209,14 +209,14 @@ const SummaryPage = () => {
           <hr className='my-10' />
           <form onSubmit={handleSubmit} className="space-y-4">
 
-            <div className='flex flex-row items-start justify-start'>
+            {/* <div className='flex flex-row items-start justify-start'>
               <input type='checkbox' className='mr-2 mt-1 accent-black' checked={termsAccepted1} onChange={() => setTermsAccepted1(!termsAccepted1)} />
               <label className='text-sm text-black'>I agree that I am 16 years of age or older in compliance with the age restriction terms of this event.</label>
-            </div>
+            </div> */}
 
             <div className='flex items-start'>
               <input type='checkbox' className='mr-2 mt-1 accent-black' checked={termsAccepted2} onChange={() => setTermsAccepted2(!termsAccepted2)} />
-              <label className='text-sm text-black'>By registering, I confirm that I acknowledge receiving an account and automatically agree to the General <Link href='/terms-of-use' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Terms of Use</Link>, <Link href='/privacy-policy' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Privacy Policy</Link>, <Link href='/terms-of-participation' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Participation Terms</Link>, and <Link href='/registration-terms' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Registration Terms</Link>. I understand that my personal data will be processed in accordance with the platform's <Link href='/privacy-policy' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Privacy Policy</Link>.</label>
+              <label className='text-sm text-black'>By registering, I confirm that I acknowledge receiving an account and automatically agree to the <Link href='/registration-terms' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Terms of Registration</Link>, <Link href='/terms-of-participation' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Terms of Participation</Link>, <Link href='/terms-of-use' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Terms of Use</Link> and <Link href='/privacy-policy' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Privacy Policy</Link> of the website. I understand that my personal data will be processed in accordance with the platform's <Link href='/privacy-policy' target='_blank' rel='noreferrer noopener' className='font-bold underline'>Privacy Policy</Link>.</label>
             </div>
 
 
@@ -229,7 +229,7 @@ const SummaryPage = () => {
               </Link>
               <button
                 type="submit"
-                className={`min-w-40 text-white px-10 py-3 rounded hover:bg-orange-700 font-black text-nowrap ${termsAccepted1 && termsAccepted2 &&  !userData.registered  ? 'bg-primary' : 'bg-gray-400 cursor-not-allowed'}`} disabled={(!termsAccepted1 || !termsAccepted2) || userData.registered}
+                className={`min-w-40 text-white px-10 py-3 rounded hover:bg-orange-700 font-black text-nowrap ${termsAccepted2 &&  !userData.registered  ? 'bg-primary' : 'bg-gray-400 cursor-not-allowed'}`} disabled={( !termsAccepted2) || userData.registered}
               >
                 {(userData.registered) ? "Already Registered" : "Complete Registration"}
               </button>
