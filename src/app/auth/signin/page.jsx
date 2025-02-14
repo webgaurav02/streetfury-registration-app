@@ -98,7 +98,7 @@ export default function SignIn() {
               ))}
             </div>
 
-            <div className="flex flex-row justify-center gap-2">
+            {/* <div className="flex flex-row justify-center gap-2">
 
               <p className="border-b mb-3 border-text w-full"></p>
 
@@ -135,7 +135,7 @@ export default function SignIn() {
                 />
               </div>
               <button type="submit" className="mt-5 bg-secondary text-white hover:bg-accent transition-colors py-2 font-semibold">Sign In</button>
-            </form>
+            </form> */}
 
             <Link href='/auth/signup'>
               Need an account? <b>Sign Up</b>

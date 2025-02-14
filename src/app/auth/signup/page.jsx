@@ -198,25 +198,25 @@ export default function SignUp() {
                                 <h1 className="text-3xl font-anton mb-10">MINUS01</h1>
                                 <h1 className="text-xl font-bold font-inter uppercase mb-10">Sign Up</h1>
 
-                                {!showOtp ? (
-                                    <div>
-                                        <div className="pb-5">
-                                            {/* Using react-social-login-buttons */}
-                                            {providers.map((provider) => (
-                                                <button key={provider.id} onClick={() => signIn(provider.id)} className="w-full flex items-center justify-center bg-white border border-gray-300 rounded-md shadow-sm px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                    <Image
-                                                        src="/images/google-icon.png"
-                                                        alt="Google"
-                                                        width={20}
-                                                        height={20}
-                                                        className="mr-2"
-                                                    />
-                                                    Sign in with Google
-                                                </button>
-                                            ))}
-                                        </div>
+                                {/* {!showOtp ? ( */}
+                                <div>
+                                    <div className="pb-5">
+                                        {/* Using react-social-login-buttons */}
+                                        {providers.map((provider) => (
+                                            <button key={provider.id} onClick={() => signIn(provider.id)} className="w-full flex items-center justify-center bg-white border border-gray-300 rounded-md shadow-sm px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                <Image
+                                                    src="/images/google-icon.png"
+                                                    alt="Google"
+                                                    width={20}
+                                                    height={20}
+                                                    className="mr-2"
+                                                />
+                                                Sign in with Google
+                                            </button>
+                                        ))}
+                                    </div>
 
-                                        <div className="flex flex-row justify-center gap-2">
+                                    {/* <div className="flex flex-row justify-center gap-2">
 
                                             <p className="border-b mb-3 border-text w-full"></p>
 
@@ -284,8 +284,8 @@ export default function SignUp() {
                                         <button onClick={handleOtpSubmit} className="mt-5 bg-secondary text-white hover:bg-accent transition-colors py-2 font-semibold">
                                             Verify OTP
                                         </button>
-                                    </div>
-                                )}
+                                        )}*/}
+                                </div>
 
                                 <Link href="/auth/signin">
                                     Already have an account? <b>Login</b>
