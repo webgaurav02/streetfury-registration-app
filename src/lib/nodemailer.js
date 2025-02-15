@@ -56,7 +56,7 @@ export const sendConfirmationEmail = async (email, emailHtml, termsOfRegistratio
                 contentType: 'application/pdf',
             },
             {
-                filename: `Cancellation and Refund.pdf`,
+                filename: `Cancellations and Refund.pdf`,
                 content: cancellationAndRefund,
                 contentType: 'application/pdf',
             },

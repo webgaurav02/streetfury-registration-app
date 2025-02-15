@@ -8,12 +8,12 @@ const PrivacyPolicyPage = () => {
         Last Updated: February 7, 2025
       </p>
       <p className='font-assistant mt-5 text-xl'>
-        Minus01 x StreetFury 2025 respects your privacy and is committed to protecting the personal information you provide while using our platform. This Privacy Policy outlines how we collect, use, share, and safeguard your information in accordance with applicable Indian data protection laws.
+         MINUS01 STREETJAM respects your privacy and is committed to protecting the personal information you provide while using our platform. This Privacy Policy outlines how we collect, use, share, and safeguard your information in accordance with applicable Indian data protection laws.
       </p>
 
       <h2 className='font-assistant font-semibold mt-10 text-2xl'>1. Interpretation and Definitions</h2>
       <p className='font-assistant mt-5 text-xl'>
-        References to "We," "Us," and "Our" refer to Minus01 x StreetFury 2025. "You" refers to the user accessing our platform.
+        References to "We," "Us," and "Our" refer to MINUS01 STREETJAM. "You" refers to the user accessing our platform.
       </p>
 
       <h2 className='font-assistant font-semibold mt-10 text-2xl'>2. Collecting and Using Your Personal Data</h2>
@@ -73,7 +73,7 @@ const PrivacyPolicyPage = () => {
 
       <h2 className='font-assistant font-semibold mt-10 text-2xl'>11. Contact Us</h2>
       <p className='font-assistant mt-5 text-xl'>
-        For questions or concerns, contact us at <a href="mailto:streetfury@minus01.com" className='text-blue-500'>streetfury@minus01.com</a>.
+        For questions or concerns, contact us at <a href="mailto:streetjam@seven01.com" className='text-blue-500'>streetjam@seven01.com</a>.
       </p>
     </div>
   );

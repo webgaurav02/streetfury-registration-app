@@ -9,7 +9,7 @@ const TermsPage = () => {
           I agree that I am 16 years of age or older in compliance with the age restriction terms of this event.
         </li>
         <li>
-          I confirm that I am in the appropriate physical and mental condition and possess the required skills to participate in the event. I understand that participation involves a degree of risk. I agree that neither the organiser (Minus01) nor any companies involved will be held responsible for any injury I may sustain. If I cause damage to others or their property, I will accept responsibility and ensure Minus01 or other companies involved do not incur any loss in this regard.
+          I confirm that I am in the appropriate physical and mental condition and possess the required skills to participate in the event. I understand that participation involves a degree of risk. I agree that neither the organiser (MINUS01) nor any companies involved will be held responsible for any injury I may sustain. If I cause damage to others or their property, I will accept responsibility and ensure Minus01 or other companies involved do not incur any loss in this regard.
         </li>
         <li>
           I agree to adhere to the organiser's terms and conditions for the event and follow all safety protocols and instructions after completing registration and being selected for participation.</li>
@@ -31,7 +31,7 @@ const TermsPage = () => {
         <li>I acknowledge that my participation in this event is voluntary and agree not to demand any rewards, compensation, or benefits by forceful or unfair means.
         </li>
         <li>
-          By registering for this event, I agree to receive promotional emails from Minus01 regarding future events, offers, product launches, etc.
+          By registering for this event, I agree to receive promotional emails from MINUS01 regarding future events, offers, product launches, etc.
 
         </li>
       </ol>

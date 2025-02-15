@@ -8,18 +8,18 @@ const TermsOfUsePage = () => {
         Last Updated: February 7, 2025
       </p>
       <p className='font-assistant mt-5 text-xl'>
-        Welcome to Minus01 x StreetFury 2025! By accessing or using our website, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, please refrain from using our services.
+        Welcome to MINUS01 STREETJAM! By accessing or using our website, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, please refrain from using our services.
       </p>
 
       <h2 className='font-assistant font-semibold mt-10 text-2xl'>1. Interpretation</h2>
       <p className='font-assistant mt-5 text-xl'>
-        References to "We," "Us," and "Our" refer to Minus01 x StreetFury 2025, while "You" and "Your" refer to the user accessing our platform. These terms apply to all visitors, users, and others who access or use the service.
+        References to "We," "Us," and "Our" refer to MINUS01 STREETJAM!, while "You" and "Your" refer to the user accessing our platform. These terms apply to all visitors, users, and others who access or use the service.
       </p>
 
       <h2 className='font-assistant font-semibold mt-10 text-2xl'>2. Definitions</h2>
       <ul className='list-disc space-y-5 mt-5 pl-5'>
         <li>Country: Meghalaya, India</li>
-        <li>Company: Minus01 x StreetFury 2025, operated by Minus01.</li>
+        <li>Company: MINUS01 STREETJAM!, operated by Minus01.</li>
         <li>Device: Any technology used to access our service, including mobile phones, tablets, or computers.</li>
         <li>Service: The website, content, and interactive features provided by Minus01 x StreetFury 2025.</li>
         <li>Third-Party Social Media Service: Platforms such as Facebook, Instagram, YouTube, etc.</li>
@@ -71,7 +71,7 @@ const TermsOfUsePage = () => {
 
       <h2 className='font-assistant font-semibold mt-10 text-2xl'>10. Contact</h2>
       <p className='font-assistant mt-5 text-xl'>
-        For any queries or to report violations, contact us at <a href="mailto:streetfury@minus01.com" className='text-blue-500'>streetfury@minus01.com</a>.
+        For any queries or to report violations, contact us at <a href="mailto:streetfury@minus01.com" className='text-blue-500'>streetjam@seven01.com</a>.
       </p>
     </div>
   );

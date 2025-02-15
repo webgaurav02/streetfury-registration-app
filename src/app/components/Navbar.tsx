@@ -44,12 +44,12 @@ const Navbar: FC = () => {
   return (
     <nav className=" w-screen bg-none p-4 ">
       <div className="md:max-w-full max-w-7xl mx-auto flex justify-between items-center">
-        <Link href="/" className={`text-2xl font-anton`}>
+        <Link href="https://streetjam.minus01.com" className={`text-2xl font-anton`}>
           <div className="flex flex-row gap-2 justify-center items-center">
             <p className="font-thin text-4xl">
               <Image 
                 src={img_removebg_black}
-                alt="Minus01 logo"
+                alt="MINUS01 logo"
                 height="0"
                 width="0"
                 sizes="100svw"
