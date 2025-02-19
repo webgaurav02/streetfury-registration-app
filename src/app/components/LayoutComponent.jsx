@@ -15,6 +15,8 @@ import Footer from "./Footer";
 import Hero_bg from "../../../public/Hero_bg.svg"
 import Hero_grain from "../../../public/Hero_grain.svg"
 
+import { OrganizerProvider } from '../context/OrganizerContext';
+
 
 
 const LayoutComponent = ({ children }) => {
@@ -24,10 +26,11 @@ const LayoutComponent = ({ children }) => {
     return (
         <div>
             <SessionProvider>
-                {pathname !== 'auth' && <Navbar />}
-                <div className="relative">
-                    {/* Background */}
-                    {/* <Image
+                <OrganizerProvider>
+                    {pathname !== 'auth' && <Navbar />}
+                    <div className="relative">
+                        {/* Background */}
+                        {/* <Image
                         src={Hero_bg}
                         alt="Streetfury Hero Section"
                         height="0"
@@ -37,8 +40,8 @@ const LayoutComponent = ({ children }) => {
                         priority
                     /> */}
 
-                    {/* Grain */}
-                    {/* <Image
+                        {/* Grain */}
+                        {/* <Image
                         src={Hero_grain}
                         alt="Streetfury Hero Section"
                         height="0"
@@ -47,9 +50,10 @@ const LayoutComponent = ({ children }) => {
                         className='h-full w-[100svw] object-cover absolute -z-10 left-0 top-0 '
                         priority
                     /> */}
-                    {children}
-                </div>
-                {pathname !== 'auth' && <Footer />}
+                        {children}
+                    </div>
+                    {pathname !== 'auth' && <Footer />}
+                </OrganizerProvider>
             </SessionProvider>
         </div>
     )

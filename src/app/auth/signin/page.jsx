@@ -27,6 +27,9 @@ const providers = [
 
 
 //Assets
+import logo from "../../../../public/Logo/img-removebg-black.png"
+
+//Assets
 // import bg from "../../../../public/images/signin_bg.jpg"
 
 export default function SignIn() {
@@ -79,7 +82,15 @@ export default function SignIn() {
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <h1 className="text-3xl font-anton mb-10">MINUS01</h1>
+            {/* <h1 className="text-3xl font-anton mb-10">MINUS01</h1> */}
+            <Image
+              src={logo}
+              alt="MINUS01"
+              height="0"
+              width="0"
+              sizes="100svw"
+              className="h-20 w-auto mx-auto mb-10"
+            />
             <h1 className="text-xl font-bold font-inter uppercase mb-10">Sign In</h1>
 
             <div className="pb-5">

@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 import SidebarRegister from "../components/SidebarRegister"
 import { Diversity1 } from '@mui/icons-material';
-import square from '../../../public/images/square.png'
+import square from '../../../public/Logo/STREETJAM.png'
 import Link from 'next/link';
 
 export default function RegistrationRootLayout({ children }) {
@@ -34,14 +34,14 @@ export default function RegistrationRootLayout({ children }) {
                 </div>
                 <div className='md:max-w-[30vw] md:pt-40 pt-10 bg-white px-10'>
                     <h2 className='text-3xl font-semibold'>Event</h2>
-                    <div className='my-5 flex flex-row gap-5'>
+                    <div className='my-5 flex flex-row '>
                         <Image 
                             src={square}
                             alt="Streetfury 2025 Registrations"
                             height="0"
                             width="0"
                             sizes='100svw'
-                            className='aspect-square h-40 object-cover w-auto shadow-lg rounded-lg'
+                            className='h-40 object-cover w-auto'
                         />
                         <div className='space-y-3 font-medium'>
                             <p className='text-xl font-anton font-thin'>MINUS01 STREETJAM</p>

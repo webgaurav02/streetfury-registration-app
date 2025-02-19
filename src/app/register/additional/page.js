@@ -101,7 +101,7 @@ const AdditionalDataPage = () => {
 
     if (!userData.sport) newErrors.sport = 'Select a Sport';
     if (!userData.instagram || !urlRegex.test(userData.instagram)) newErrors.instagram = 'Enter a valid Instagram URL.';
-    if (userData.youtube && !urlRegex.test(userData.youtube)) newErrors.youtube = 'Enter a valid YouTube URL.';
+    // if (userData.youtube && !urlRegex.test(userData.youtube)) newErrors.youtube = 'Enter a valid YouTube URL.';
     if (!userData.pitch) {
       newErrors.pitch = 'Please write a Short Pitch';
     } else {
@@ -214,6 +214,7 @@ const AdditionalDataPage = () => {
                 disabled={userData.registered}
               />
             </div>
+              {errors.youtube && <p className="text-red-500 text-sm">{errors.youtube}</p>}
           </div>
           <div>
             <label className="block te mb-2 mt-10">Why Should You Be Selected? <span className='text-red-600'>&#42;</span></label>
@@ -231,6 +232,7 @@ const AdditionalDataPage = () => {
             <label className="block text-sm mb-2 mt-10">Upload Your Portfolio:<span className='text-red-600'>&#42;</span></label>
             <label className="block text-xs font-normal mb-2">Google Drive link to upload videos or images (limit: 100 MB, supported
               formats: MP4, JPG, PNG).</label>
+            <label className="block text-xs font-normal mb-2"><span className='text-primary font-bold'>Note</span>: Please ensure that the Google Drive link is set to <b>"Anyone with the link can view"</b> before submitting. This will allow us to access the shared file.</label>
             <div className='flex flex-row items-center'>
               <div className=' p-2 border-l border-t border-b border-gray-300 border-opacity-70 rounded-l'><AddToDriveIcon sx={{ fontSize: "1.2rem" }} /></div>
               <input

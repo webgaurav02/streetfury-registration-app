@@ -37,6 +37,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Loading from "../../components/Loading";
 
 
+//Assets
+import logo from "../../../../public/Logo/img-removebg-black.png"
+
 
 
 
@@ -195,7 +198,15 @@ export default function SignUp() {
                                 exit={{ y: "-100%", opacity: 0 }}
                                 transition={{ duration: 0.5, ease: "easeInOut" }}
                             >
-                                <h1 className="text-3xl font-anton mb-10">MINUS01</h1>
+                                {/* <h1 className="text-3xl font-anton mb-10">MINUS01</h1> */}
+                                <Image
+                                    src={logo}
+                                    alt="MINUS01"
+                                    height="0"
+                                    width="0"
+                                    sizes="100svw"
+                                    className="h-20 w-auto mx-auto mb-10"
+                                />
                                 <h1 className="text-xl font-bold font-inter uppercase mb-10">Sign Up</h1>
 
                                 {/* {!showOtp ? ( */}

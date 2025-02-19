@@ -7,6 +7,10 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
+import Image from "next/image";
+
+//Assets
+import img from "../../../public/Logo/img-removebg-white.png"
 
 export default function Footer() {
   return (
@@ -15,7 +19,15 @@ export default function Footer() {
         <div className="flex flex-wrap justify-between items-start space-y-10">
           {/* Logo and Description */}
           <div className="w-full md:w-1/3 mb-4 md:mb-0">
-            <h2 className="text-4xl font-anton font-thin">MINUS01</h2>
+            <Image 
+              src={img}
+              alt="MINUS01"
+              height="0"
+              width="0"
+              sizes="100svw"
+              className="h-20 w-auto"
+            />
+            {/* <h2 className="text-4xl font-anton font-thin">MINUS01</h2> */}
             <p className="mt-2 text-gray-400 pr-10">
             MINUS01 is where culture, creativity, and performance unite for those who dare
             to move differently
@@ -28,7 +40,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="https://streetjam.minus01.com"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Home
@@ -36,7 +48,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://streetjam.minus01.com/about"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   About
@@ -44,7 +56,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://streetjam.minus01.com/contact"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Contact
@@ -96,7 +108,7 @@ export default function Footer() {
                 <YouTubeIcon />
               </Link>
               <Link
-                href=""
+                href="https://www.facebook.com/share/1ACuaiJkE5/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
