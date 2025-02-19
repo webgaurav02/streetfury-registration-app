@@ -110,7 +110,7 @@ const AdditionalDataPage = () => {
         newErrors.pitch = 'Pitch must not exceed 100 words';
       }
     }
-    if (!userData.portfolio || !urlRegex.test(userData.portfolio)) newErrors.portfolio = 'Enter a valid Google Drive URL.';
+    // if (!userData.portfolio || !urlRegex.test(userData.portfolio)) newErrors.portfolio = 'Enter a valid Google Drive URL.';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -217,7 +217,7 @@ const AdditionalDataPage = () => {
               {errors.youtube && <p className="text-red-500 text-sm">{errors.youtube}</p>}
           </div>
           <div>
-            <label className="block te mb-2 mt-10">Why Should You Be Selected? <span className='text-red-600'>&#42;</span></label>
+            <label className="block te mb-2 mt-10">What's your story? <span className='text-red-600'>&#42;</span></label>
             <label className="block text-xs font-normal mb-2">Short Pitch - 100 words max</label>
             <textarea
               value={userData.pitch}
@@ -229,7 +229,7 @@ const AdditionalDataPage = () => {
             {errors.pitch && <p className="text-red-500 text-sm">{errors.pitch}</p>}
           </div>
           <div>
-            <label className="block text-sm mb-2 mt-10">Upload Your Portfolio:<span className='text-red-600'>&#42;</span></label>
+            <label className="block text-sm mb-2 mt-10">Upload Your Portfolio:</label>
             <label className="block text-xs font-normal mb-2">Google Drive link to upload videos or images (limit: 100 MB, supported
               formats: MP4, JPG, PNG).</label>
             <label className="block text-xs font-normal mb-2"><span className='text-primary font-bold'>Note</span>: Please ensure that the Google Drive link is set to <b>"Anyone with the link can view"</b> before submitting. This will allow us to access the shared file.</label>

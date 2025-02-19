@@ -15,7 +15,7 @@ export async function PUT(req, { params }) {
 
         const { sport, instagram, youtube, pitch, portfolio, info } = await req.json();
 
-        if (!sport || !instagram || !pitch || !portfolio) {
+        if (!sport || !instagram || !pitch) {
             return NextResponse.json(
                 { error: 'All fields are required' },
                 { status: 400 }

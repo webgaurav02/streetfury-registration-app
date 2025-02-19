@@ -33,8 +33,8 @@ export default function RegistrationRootLayout({ children }) {
                     {children}
                 </div>
                 <div className='md:max-w-[30vw] md:pt-40 pt-10 bg-white px-10'>
-                    <h2 className='text-3xl font-semibold'>Event</h2>
-                    <div className='my-5 flex flex-row '>
+                    {/* <h2 className='text-3xl font-semibold'>Event</h2> */}
+                    <div className='my-5 flex flex-row items-center'>
                         <Image 
                             src={square}
                             alt="Streetfury 2025 Registrations"
@@ -45,7 +45,7 @@ export default function RegistrationRootLayout({ children }) {
                         />
                         <div className='space-y-3 font-medium'>
                             <p className='text-xl font-anton font-thin'>MINUS01 STREETJAM</p>
-                            <p><b>Venue</b> : NEHU, Shillong, IN</p>
+                            <p className='text-nowrap'><b>Venue</b> : NEHU, Shillong, IN</p>
                             <p><b>Date</b> : 05 April, 2025</p>
                         </div>
                     </div>

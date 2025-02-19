@@ -265,14 +265,14 @@ const PersonalDataPage = () => {
           <button
             disabled={userData.registered}
             onClick={() => setRsvp(false)}
-            className={`${rsvp ? "bg-white font-semibold border border-black w-fit text-black" : "bg-black w-fit text-white"} px-5 py-2 ${userData.registered?"cursor-not-allowed":"cursor-pointer"} rounded-md hover:-translate-y-1 transition-all duration-300 hover:shadow-md`}
+            className={`${rsvp ? "bg-white border border-black w-fit text-black" : "bg-black w-fit text-white"} font-semibold px-5 py-2 ${userData.registered?"cursor-not-allowed":"cursor-pointer"} rounded-md hover:-translate-y-1 transition-all duration-300 hover:shadow-md`}
           >
             <SkateboardingIcon /> PARTICIPANT
           </button>
           <button
             disabled={userData.registered}
             onClick={() => setRsvp(true)}
-            className={`${!rsvp ? "bg-white font-semibold border border-black w-fit text-black" : "bg-black w-fit text-white"} px-5 py-2 ${userData.registered?"cursor-not-allowed":"cursor-pointer"} rounded-md hover:-translate-y-1 transition-all duration-300 hover:shadow-md`}
+            className={`${!rsvp ? "bg-white border border-black w-fit text-black" : "bg-black w-fit text-white"} font-semibold px-5 py-2 ${userData.registered?"cursor-not-allowed":"cursor-pointer"} rounded-md hover:-translate-y-1 transition-all duration-300 hover:shadow-md`}
           >
             <PeopleIcon /> RSVP
           </button>
@@ -282,6 +282,7 @@ const PersonalDataPage = () => {
           initial="hidden"
           animate="show"
         >
+          <p className='mt-10'>Fields marked with <span className='text-red-600'>&#42;</span> are mandatory</p>
           <motion.div variants={itemVariants}>
             <label className="block text-sm font mb-2 mt-10">First Name <span className='text-red-600'>&#42;</span></label>
             <input
