@@ -14,7 +14,7 @@ const CancellationsRefundPage = () => {
 
       <h2 className='font-assistant font-semibold mt-10 text-2xl'>Cancellation Request Process</h2>
       <ul className='list-disc space-y-5 mt-5 pl-5'>
-        <li>To initiate a cancellation, participants must send an email to <a href="mailto:streetjam@seven01.com" className='text-blue-500'>streetjam@seven01.com</a>.</li>
+        <li>To initiate a cancellation, participants must send an email to <a href="mailto:streetjam@minus01.com" className='text-blue-500'>streetjam@minus01.com</a>.</li>
         <li>The email should include:
           <ul className='list-disc pl-5 space-y-2'>
             <li>Full name of the participant</li>

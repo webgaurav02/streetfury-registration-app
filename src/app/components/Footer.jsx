@@ -116,7 +116,7 @@ export default function Footer() {
               >
                 <FacebookIcon />
               </Link>
-              <Link
+              {/* <Link
                 href=""
                 target="_blank"
                 rel="noopener noreferrer"
@@ -124,7 +124,7 @@ export default function Footer() {
                 aria-label="X"
               >
                 <XIcon />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

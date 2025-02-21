@@ -73,7 +73,7 @@ const PrivacyPolicyPage = () => {
 
       <h2 className='font-assistant font-semibold mt-10 text-2xl'>11. Contact Us</h2>
       <p className='font-assistant mt-5 text-xl'>
-        For questions or concerns, contact us at <a href="mailto:streetjam@seven01.com" className='text-blue-500'>streetjam@seven01.com</a>.
+        For questions or concerns, contact us at <a href="mailto:streetjam@minus01.com" className='text-blue-500'>streetjam@minus01.com</a>.
       </p>
     </div>
   );
