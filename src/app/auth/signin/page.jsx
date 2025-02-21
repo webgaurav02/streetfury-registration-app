@@ -41,12 +41,69 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+
+  const checkAndRedirectFromInAppBrowser = () => {
+
+    if (typeof window === "undefined") return false;;
+
+    const userAgent = navigator.userAgent.toLowerCase();
+    const url = window.location.href;
+
+    // List of in-app browsers
+    const inAppBrowsers = [
+      "linkedinapp",
+      "fban", // Facebook App
+      "fbav", // Facebook App
+      "instagram",
+      "line",
+      "wv", // WebView
+      "fb_iab", // Facebook in-app browser
+    ];
+
+    const isInAppBrowser = inAppBrowsers.some((app) => userAgent.includes(app));
+    const isMobileDevice = /iphone|ipad|android/i.test(userAgent);
+
+    if (isMobileDevice && isInAppBrowser) {
+      // iOS: Show a message to manually open in Safari
+      if (/iphone|ipad/i.test(userAgent)) {
+        alert("Google sign-in may not work in this browser. Please open this page in Safari for a better experience.");
+        return true;
+      }
+
+      // Android: Try to force Chrome using intent://
+      if (/android/i.test(userAgent)) {
+
+        const ask = confirm("Google sign-in may not work in this browser. Would you like to open this page in another browser for a better experience?")
+        if (ask) {
+          const intentUrl = `intent://${url.replace(/^https?:\/\//, "")}#Intent;scheme=https;package=com.android.chrome;end`;
+          // Try opening in Chrome
+          window.location.href = intentUrl;
+          // Fallback: Open in system browser (for unsupported devices)
+          setTimeout(() => {
+            window.open(url, "_system");
+          }, 1000);
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+    }
+    return false;
+  };
+
+
+  const handleProviderSignIn = (providerId) => {
+    signIn(providerId)
+  }
+
+
   useEffect(() => {
     if (status === "authenticated") {
       router.push("/")
     }
+    checkAndRedirectFromInAppBrowser();
   }, [status, router]);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,7 +153,7 @@ export default function SignIn() {
             <div className="pb-5">
               {/* Using react-social-login-buttons */}
               {providers.map((provider) => (
-                <button key={provider.id} onClick={() => signIn(provider.id)} className="w-full flex items-center justify-center bg-white border border-gray-300 rounded-md shadow-sm px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <button key={provider.id} onClick={() => handleProviderSignIn(provider.id)} className="w-full flex items-center justify-center bg-white border border-gray-300 rounded-md shadow-sm px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   <Image
                     src="/images/google-icon.png"
                     alt="Google"
